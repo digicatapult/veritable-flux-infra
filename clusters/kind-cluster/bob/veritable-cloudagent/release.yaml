@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: bob-veritable-cloudagent
+  namespace: bob
+spec:
+  install:
+    remediation:
+      retries: -1
+  chart:
+    spec:
+      chart: veritable-cloudagent
+      sourceRef:
+        kind: HelmRepository
+        name: digicatapult
+  valuesFrom:
+  - kind: ConfigMap
+    name: bob-values
+    valuesKey: values-veritable-cloudagent.yaml
+  interval: 10m0s

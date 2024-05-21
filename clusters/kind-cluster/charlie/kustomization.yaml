@@ -3,3 +3,12 @@ kind: Kustomization
 namespace: charlie
 resources:
   - source.yaml
+  - veritable-cloudagent
+configMapGenerator:
+  - name: charlie-values
+    files:
+      - values-veritable-cloudagent.yaml=veritable-cloudagent/values.yaml
+configurations:
+  - kustomize-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
