@@ -3,3 +3,12 @@ kind: Kustomization
 namespace: bob
 resources:
   - source.yaml
+  - veritable-cloudagent
+configMapGenerator:
+  - name: bob-values
+    files:
+      - values-veritable-cloudagent.yaml=veritable-cloudagent/values.yaml
+configurations:
+  - kustomize-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true

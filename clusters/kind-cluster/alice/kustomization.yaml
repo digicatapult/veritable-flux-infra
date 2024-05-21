@@ -3,3 +3,12 @@ kind: Kustomization
 namespace: alice
 resources:
   - source.yaml
+  - veritable-cloudagent
+configMapGenerator:
+  - name: alice-values
+    files:
+      - values-veritable-cloudagent.yaml=veritable-cloudagent/values.yaml
+configurations:
+  - kustomize-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
