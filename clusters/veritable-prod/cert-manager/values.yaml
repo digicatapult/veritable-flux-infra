@@ -2,7 +2,7 @@ installCRDs: true
 metrics:
   enabled: true
   serviceMonitor:
-    enabled: false
+    enabled: true
     namespace: cert-manager
     relabelings:
       - action: replace
