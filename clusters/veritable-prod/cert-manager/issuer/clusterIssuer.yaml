@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: opensource@digicatapult.org.uk
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - dns01:
+        azureDNS:
+          subscriptionID: 4700628d-dd29-4d3d-b6a4-3ef8f9c924cd
+          resourceGroupName: veritable-prod-infra
+          hostedZoneName: vrtbl.com
+          # Azure Cloud Environment, default to AzurePublicCloud
+          environment: AzurePublicCloud
+          # optional, only required if node pools have more than 1 managed identity assigned
+          managedIdentity:
+            # client id of the node pool managed identity (can not be set at the same time as resourceID)
+            clientID: 365e7521-0efb-445f-b5d7-df296ba021e0
