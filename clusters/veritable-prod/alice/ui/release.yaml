@@ -22,7 +22,7 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: alice-values
-      valuesKey: nginx-values.yaml
+      valuesKey: ui-values.yaml
     - kind: Secret
       name: alice-companies-house-api
       valuesKey: key
