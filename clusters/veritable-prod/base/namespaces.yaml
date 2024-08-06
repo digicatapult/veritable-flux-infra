@@ -22,3 +22,44 @@ metadata:
     app.kubernetes.io/instance: veritable
     app.kubernetes.io/version: latest
   name: keycloak
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: alice
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: bob
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: charlie
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: dave
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: eve
+  

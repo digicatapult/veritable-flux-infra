@@ -1,0 +1,16 @@
+label: Alice veritable-cloudagent REST API
+walletId: Alice
+endpoint: ["http://cloudagent-veritable-cloudagent.alice.svc.cluster.local:5002"]
+logLevel: debug
+ingress:
+  enabled: false
+postgresql:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
+      relabelings:
+        - action: replace
+          sourceLabels: [namespace]
+          targetLabel: kubernetes_namespace

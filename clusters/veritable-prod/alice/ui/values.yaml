@@ -1,0 +1,24 @@
+label: Alice Veritable UI
+publicUrl: "https://alice.vrtbl.com/"
+apiSwaggerTitle: Alice Veritable
+idpClientId: "alice"
+idpClientSecret: "TODO"
+idpPublicURLPrefix: https://auth.vrtbl.com/auth/realms/alice/proto/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth/realms/alice/proto/openid-connect
+emailFromAddress: "hello-alice@vrtbl.com"
+emailAdminAddress: "admin-alice@vrtbl.com"
+externalCloudagent:
+  host: "http://cloudagent-veritable-cloudagent.alice.svc.cluster.local"
+postgresql:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
+      relabelings:
+        - action: replace
+          sourceLabels: [namespace]
+          targetLabel: kubernetes_namespace
+ingress:
+  hostname: alice.vrtbl.com
+  ingressClassName: nginx-alice
