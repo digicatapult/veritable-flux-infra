@@ -28,7 +28,7 @@ spec:
       valuesKey: key
       targetPath: companiesHouseApiKey.secret
     - kind: Secret
-      name: alice-cookie-session
+      name: alice-cookie-session-key
       valuesKey: key
       targetPath: cookieSessionKeys.secret[0]
     - kind: Secret
