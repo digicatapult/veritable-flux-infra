@@ -10,6 +10,10 @@ emailAdminAddress: "admin-alice@vrtbl.com"
 externalCloudagent:
   host: "http://cloudagent-veritable-cloudagent.alice.svc.cluster.local"
 postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
   metrics:
     enabled: true
     serviceMonitor:
