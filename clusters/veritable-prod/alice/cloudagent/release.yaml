@@ -15,7 +15,7 @@ spec:
       chart: veritable-cloudagent
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: digicatapult
   interval: 10m0s
   # Default values
   # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
@@ -27,5 +27,3 @@ spec:
       name: alice-wallet-key
       valuesKey: key
       targetPath: walletKey.secret
-      
-
