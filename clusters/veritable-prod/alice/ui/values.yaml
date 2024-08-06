@@ -9,6 +9,7 @@ emailFromAddress: "hello-alice@vrtbl.com"
 emailAdminAddress: "admin-alice@vrtbl.com"
 externalCloudagent:
   host: "http://cloudagent-veritable-cloudagent.alice.svc.cluster.local"
+  port: 3000
 postgresql:
   primary:
     persistence:
