@@ -32,6 +32,6 @@ spec:
       valuesKey: key
       targetPath: cookieSessionKeys.secret[0]
     - kind: Secret
-      name: alice-inivitation-pin
+      name: alice-invitation-pin
       valuesKey: pin
       targetPath: invitationPin.secret
