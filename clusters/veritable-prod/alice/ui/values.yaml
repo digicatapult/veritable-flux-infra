@@ -8,7 +8,7 @@ idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth/realms/ali
 emailFromAddress: "hello-alice@vrtbl.com"
 emailAdminAddress: "admin-alice@vrtbl.com"
 externalCloudagent:
-  host: "cloudagent-veritable-cloudagent.alice.svc.cluster.local"
+  host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
 postgresql:
   primary:
