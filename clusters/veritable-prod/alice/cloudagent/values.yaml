@@ -1,5 +1,4 @@
 label: Alice veritable-cloudagent REST API
-walletId: Alice
 endpoint: ["http://cloudagent-veritable-cloudagent.alice.svc.cluster.local:5002"]
 logLevel: debug
 ingress:
