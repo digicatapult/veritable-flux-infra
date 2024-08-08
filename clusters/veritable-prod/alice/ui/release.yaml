@@ -35,3 +35,7 @@ spec:
       name: alice-invitation-pin
       valuesKey: pin
       targetPath: invitationPin.secret
+    - kind: Secret
+      name: alice-auth-client-secret
+      valuesKey: secret
+      targetPath: idpClientSecret
