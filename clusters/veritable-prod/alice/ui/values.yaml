@@ -1,5 +1,5 @@
 label: Alice Veritable UI
-publicUrl: "https://alice.vrtbl.com/"
+publicUrl: "https://alice.vrtbl.com"
 apiSwaggerTitle: Alice Veritable
 idpClientId: "alice"
 idpPublicURLPrefix: https://auth.vrtbl.com/auth/realms/alice/proto/openid-connect
