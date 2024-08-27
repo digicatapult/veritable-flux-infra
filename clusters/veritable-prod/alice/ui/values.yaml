@@ -10,6 +10,7 @@ externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
 invitationFromCompanyNumber: "07964699"
+demoMode: true
 postgresql:
   primary:
     persistence:
