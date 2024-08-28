@@ -1,0 +1,26 @@
+label: Eve Veritable UI
+publicUrl: "https://eve.vrtbl.com"
+apiSwaggerTitle: Eve Veritable
+idpClientId: "eve"
+idpPublicURLPrefix: https://auth.vrtbl.com/realms/eve/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/eve/protocol/openid-connect
+emailFromAddress: "hello-eve@vrtbl.com"
+emailAdminAddress: "admin-eve@vrtbl.com"
+externalCloudagent:
+  host: "cloudagent-veritable-cloudagent-admin.eve.svc.cluster.local"
+  port: "3000"
+invitationFromCompanyNumber: "11837978"
+demoMode: true
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: eve
+ingress:
+  hostname: eve.vrtbl.com
+  ingressClassName: nginx-eve

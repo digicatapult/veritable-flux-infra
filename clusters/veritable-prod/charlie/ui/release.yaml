@@ -1,0 +1,41 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ui
+  namespace: charlie
+spec:
+  install:
+    remediation:
+      retries: -1
+  releaseName: ui
+  chart:
+    spec:
+      version: 1.0.5
+      chart: veritable-ui
+      sourceRef:
+        kind: HelmRepository
+        name: digicatapult
+  interval: 10m0s
+  # Default values
+  # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
+  valuesFrom:
+    - kind: ConfigMap
+      name: charlie-values
+      valuesKey: ui-values.yaml
+    - kind: Secret
+      name: charlie-companies-house-api
+      valuesKey: key
+      targetPath: companysHouseApiKey.secret
+    - kind: Secret
+      name: charlie-cookie-session-key
+      valuesKey: key
+      targetPath: cookieSessionKeys.secret[0]
+    - kind: Secret
+      name: charlie-invitation-pin
+      valuesKey: pin
+      targetPath: invitationPin.secret
+    - kind: Secret
+      name: charlie-auth-client-secret
+      valuesKey: secret
+      targetPath: idpClientSecret

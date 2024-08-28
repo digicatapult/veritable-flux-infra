@@ -1,0 +1,32 @@
+watchIngressWithoutClass: true
+scope:
+  enabled: true
+ingressClassResource:
+  name: nginx-charlie
+  default: false
+service:
+  type: LoadBalancer
+  annotations: 
+    service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+    external-dns.alpha.kubernetes.io/hostname: charlie.vrtbl.com
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/common-name: charlie.vrtbl.com
+extraArgs:
+  default-ssl-certificate: "charlie/charlie-vrtbl-com-prod-tls"
+nodeSelector:
+  kubernetes.io/os: linux
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Equal
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+    operator: Equal
+containerPorts:
+  http: 80
+  https: 443
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: charlie

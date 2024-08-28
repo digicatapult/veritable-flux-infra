@@ -1,0 +1,15 @@
+label: Eve veritable-cloudagent REST API
+endpoint: ["http://cloudagent-veritable-cloudagent.eve.svc.cluster.local:5002"]
+logLevel: debug
+ingress:
+  enabled: false
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: eve

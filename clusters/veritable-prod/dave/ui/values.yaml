@@ -1,0 +1,26 @@
+label: Dave Veritable UI
+publicUrl: "https://dave.vrtbl.com"
+apiSwaggerTitle: Dave Veritable
+idpClientId: "dave"
+idpPublicURLPrefix: https://auth.vrtbl.com/realms/dave/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/dave/protocol/openid-connect
+emailFromAddress: "hello-dave@vrtbl.com"
+emailAdminAddress: "admin-dave@vrtbl.com"
+externalCloudagent:
+  host: "cloudagent-veritable-cloudagent-admin.dave.svc.cluster.local"
+  port: "3000"
+invitationFromCompanyNumber: "08705784"
+demoMode: true
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: dave
+ingress:
+  hostname: dave.vrtbl.com
+  ingressClassName: nginx-dave
