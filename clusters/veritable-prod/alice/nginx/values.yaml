@@ -30,7 +30,3 @@ metrics:
   serviceMonitor:
     enabled: true
     namespace: alice
-    relabelings:
-      - action: replace
-        sourceLabels: [namespace]
-        targetLabel: kubernetes_namespace

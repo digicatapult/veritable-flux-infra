@@ -20,11 +20,7 @@ postgresql:
     enabled: true
     serviceMonitor:
       enabled: true
-      namespace: monitoring
-      relabelings:
-        - action: replace
-          sourceLabels: [namespace]
-          targetLabel: kubernetes_namespace
+      namespace: alice
 ingress:
   hostname: alice.vrtbl.com
   ingressClassName: nginx-alice
