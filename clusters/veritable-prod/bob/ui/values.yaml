@@ -1,0 +1,30 @@
+label: Bob Veritable UI
+publicUrl: "https://bob.vrtbl.com"
+apiSwaggerTitle: Bob Veritable
+idpClientId: "bob"
+idpPublicURLPrefix: https://auth.vrtbl.com/realms/bob/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/bob/protocol/openid-connect
+emailFromAddress: "hello-bob@vrtbl.com"
+emailAdminAddress: "admin-bob@vrtbl.com"
+externalCloudagent:
+  host: "cloudagent-veritable-cloudagent-admin.bob.svc.cluster.local"
+  port: "3000"
+invitationFromCompanyNumber: "04659351"
+demoMode: true
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
+      relabelings:
+        - action: replace
+          sourceLabels: [namespace]
+          targetLabel: kubernetes_namespace
+ingress:
+  hostname: bob.vrtbl.com
+  ingressClassName: nginx-bob

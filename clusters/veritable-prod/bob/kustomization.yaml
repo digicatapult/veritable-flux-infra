@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: bob
+resources:
+  - cloudagent
+  - nginx
+  - ui
+  - source.yaml
+configMapGenerator:
+  - name: bob-values
+    files:
+      - cloudagent-values.yaml=cloudagent/values.yaml
+      - nginx-values.yaml=nginx/values.yaml
+      - ui-values.yaml=ui/values.yaml
+configurations:
+  - kustomize-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
