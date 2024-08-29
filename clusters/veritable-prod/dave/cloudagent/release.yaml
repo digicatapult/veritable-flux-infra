@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudagent
+  namespace: dave
+spec:
+  install:
+    remediation:
+      retries: -1
+  releaseName: cloudagent
+  chart:
+    spec:
+      version: 1.0.6
+      chart: veritable-cloudagent
+      sourceRef:
+        kind: HelmRepository
+        name: digicatapult
+  interval: 10m0s
+  # Default values
+  # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
+  valuesFrom:
+    - kind: ConfigMap
+      name: dave-values
+      valuesKey: cloudagent-values.yaml
+    - kind: Secret
+      name: dave-wallet-key
+      valuesKey: key
+      targetPath: walletKey.secret

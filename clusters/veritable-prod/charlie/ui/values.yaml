@@ -1,0 +1,26 @@
+label: Charlie Veritable UI
+publicUrl: "https://charlie.vrtbl.com"
+apiSwaggerTitle: Charlie Veritable
+idpClientId: "charlie"
+idpPublicURLPrefix: https://auth.vrtbl.com/realms/charlie/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/charlie/protocol/openid-connect
+emailFromAddress: "hello-charlie@vrtbl.com"
+emailAdminAddress: "admin-charlie@vrtbl.com"
+externalCloudagent:
+  host: "cloudagent-veritable-cloudagent-admin.charlie.svc.cluster.local"
+  port: "3000"
+invitationFromCompanyNumber: "10016023"
+demoMode: true
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: charlie
+ingress:
+  hostname: charlie.vrtbl.com
+  ingressClassName: nginx-charlie

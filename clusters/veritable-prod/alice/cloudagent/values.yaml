@@ -1,0 +1,15 @@
+label: Alice veritable-cloudagent REST API
+endpoint: ["http://cloudagent-veritable-cloudagent.alice.svc.cluster.local:5002"]
+logLevel: debug
+ingress:
+  enabled: false
+postgresql:
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: alice
