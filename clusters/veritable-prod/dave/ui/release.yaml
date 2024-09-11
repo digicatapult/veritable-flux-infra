@@ -11,7 +11,7 @@ spec:
   releaseName: ui
   chart:
     spec:
-      version: 1.0.5
+      version: 1.0.8
       chart: veritable-ui
       sourceRef:
         kind: HelmRepository
@@ -30,7 +30,7 @@ spec:
     - kind: Secret
       name: dave-cookie-session-key
       valuesKey: key
-      targetPath: cookieSessionKeys.secret[0]
+      targetPath: cookieSessionKeys.secret
     - kind: Secret
       name: dave-invitation-pin
       valuesKey: pin
