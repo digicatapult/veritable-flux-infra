@@ -1,6 +1,6 @@
 label: Bob veritable-cloudagent REST API
 endpoint: ["http://cloudagent-veritable-cloudagent.bob.svc.cluster.local:5002"]
-logLevel: debug
+logLevel: trace
 ingress:
   enabled: false
 postgresql:

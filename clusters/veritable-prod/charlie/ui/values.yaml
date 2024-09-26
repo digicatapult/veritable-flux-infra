@@ -24,3 +24,7 @@ postgresql:
 ingress:
   hostname: charlie.vrtbl.com
   ingressClassName: nginx-charlie
+smtpCredentials:
+  enabled: true
+  userSecret: blah
+  passwordSecret: blah
