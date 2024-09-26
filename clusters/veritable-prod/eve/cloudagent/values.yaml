@@ -13,3 +13,5 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: eve
+image:
+  tag: v0.10.26
