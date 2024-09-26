@@ -24,3 +24,7 @@ postgresql:
 ingress:
   hostname: bob.vrtbl.com
   ingressClassName: nginx-bob
+smtpCredentials:
+  enabled: true
+  userSecret: blah
+  passwordSecret: blah

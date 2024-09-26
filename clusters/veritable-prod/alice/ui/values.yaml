@@ -24,3 +24,7 @@ postgresql:
 ingress:
   hostname: alice.vrtbl.com
   ingressClassName: nginx-alice
+smtpCredentials:
+  enabled: true
+  userSecret: blah
+  passwordSecret: blah

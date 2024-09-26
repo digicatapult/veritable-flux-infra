@@ -24,3 +24,7 @@ postgresql:
 ingress:
   hostname: eve.vrtbl.com
   ingressClassName: nginx-eve
+smtpCredentials:
+  enabled: true
+  userSecret: blah
+  passwordSecret: blah
