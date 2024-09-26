@@ -1,5 +1,5 @@
 label: Alice veritable-cloudagent REST API
-endpoint: ["http://cloudagent-veritable-cloudagent.alice.svc.cluster.local:5002"]
+endpoint: "http://cloudagent-veritable-cloudagent.alice.svc.cluster.local:5002"
 logLevel: trace
 ingress:
   enabled: false
