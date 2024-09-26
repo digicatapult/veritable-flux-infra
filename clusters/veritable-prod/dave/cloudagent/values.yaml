@@ -13,3 +13,5 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: dave
+image:
+  tag: v0.10.26
