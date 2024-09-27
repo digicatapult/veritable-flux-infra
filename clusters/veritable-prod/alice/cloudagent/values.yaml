@@ -13,5 +13,7 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: alice
-image:
-  tag: v0.10.26
+ipfs:
+  persistence:
+    size: 5Gi
+    storageClass: managed-csi-premium
