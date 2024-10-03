@@ -1,6 +1,7 @@
 label: Charlie Veritable UI
 publicUrl: "https://charlie.vrtbl.com"
-apiSwaggerTitle: Charlie Veritable
+apiSwaggerTitle: Charlie
+apiSwaggerBgColor: "#ffbd59"
 idpClientId: "charlie"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/charlie/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/charlie/protocol/openid-connect

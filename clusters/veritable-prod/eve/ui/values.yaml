@@ -1,6 +1,7 @@
 label: Eve Veritable UI
 publicUrl: "https://eve.vrtbl.com"
-apiSwaggerTitle: Eve Veritable
+apiSwaggerTitle: Eve
+apiSwaggerBgColor: "#5e17eb"
 idpClientId: "eve"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/eve/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/eve/protocol/openid-connect
