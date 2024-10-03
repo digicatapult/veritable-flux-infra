@@ -1,6 +1,7 @@
 label: Dave Veritable UI
 publicUrl: "https://dave.vrtbl.com"
-apiSwaggerTitle: Dave Veritable
+apiSwaggerTitle: Dave
+apiSwaggerBgColor: "#00bf63"
 idpClientId: "dave"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/dave/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/dave/protocol/openid-connect

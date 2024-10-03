@@ -1,6 +1,7 @@
 label: Alice Veritable UI
 publicUrl: "https://alice.vrtbl.com"
-apiSwaggerTitle: Alice Veritable
+apiSwaggerTitle: Alice
+apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/alice/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/alice/protocol/openid-connect
