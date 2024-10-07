@@ -27,7 +27,6 @@ emailTransport: SMTP_EMAIL
 smtpHost: smtp.azurecomm.net
 smtpPort: 587
 emailFromAddress: "dave@vrtbl.com"
-emailAdminAddress: "dave@vrtbl.com"
 smtpSecure: true
 smtpCredentials:
   enabled: true
