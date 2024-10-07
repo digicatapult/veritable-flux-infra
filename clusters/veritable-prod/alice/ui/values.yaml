@@ -5,8 +5,6 @@ apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/alice/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/alice/protocol/openid-connect
-emailFromAddress: "hello-alice@vrtbl.com"
-emailAdminAddress: "admin-alice@vrtbl.com"
 externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
@@ -25,7 +23,13 @@ postgresql:
 ingress:
   hostname: alice.vrtbl.com
   ingressClassName: nginx-alice
+emailTransport: SMTP_EMAIL
+smtpHost: smtp.azurecomm.net
+smtpPort: 587
+emailFromAddress: "alice@vrtbl.com"
+smtpSecure: true
 smtpCredentials:
   enabled: true
-  userSecret: blah
-  passwordSecret: blah
+  existingSecret: smtp-credentials
+  existingSecretUserKey: smtp_username
+  existingSecretPasswordKey: smtp_client_secret

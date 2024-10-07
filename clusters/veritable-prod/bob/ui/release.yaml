@@ -39,3 +39,7 @@ spec:
       name: bob-auth-client-secret
       valuesKey: secret
       targetPath: idpClientSecret
+    - kind: Secret
+      name: admin-email-address
+      valuesKey: address
+      targetPath: emailAdminAddress
