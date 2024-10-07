@@ -5,8 +5,6 @@ apiSwaggerBgColor: "#ffbd59"
 idpClientId: "charlie"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/charlie/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/charlie/protocol/openid-connect
-emailFromAddress: "hello-charlie@vrtbl.com"
-emailAdminAddress: "admin-charlie@vrtbl.com"
 externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.charlie.svc.cluster.local"
   port: "3000"
@@ -25,7 +23,14 @@ postgresql:
 ingress:
   hostname: charlie.vrtbl.com
   ingressClassName: nginx-charlie
+emailTransport: SMTP_EMAIL
+smtpHost: smtp.azurecomm.net
+smtpPort: 587
+emailFromAddress: "charliee@vrtbl.com"
+emailAdminAddress: "charie@vrtbl.com"
+smtpSecure: true
 smtpCredentials:
   enabled: true
-  userSecret: blah
-  passwordSecret: blah
+  existingSecret: smtp-credentials
+  existingSecretUserKey: smtp_username
+  existingSecretPasswordKey: smtp_client_secret
