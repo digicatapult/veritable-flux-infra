@@ -26,7 +26,7 @@ ingress:
 emailTransport: SMTP_EMAIL
 smtpHost: smtp.azurecomm.net
 smtpPort: 587
-emailFromAddress: "charliee@vrtbl.com"
+emailFromAddress: "charlie@vrtbl.com"
 emailAdminAddress: "charie@vrtbl.com"
 smtpSecure: true
 smtpCredentials:
