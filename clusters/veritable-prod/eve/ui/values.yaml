@@ -27,7 +27,7 @@ emailTransport: SMTP_EMAIL
 smtpHost: smtp.azurecomm.net
 smtpPort: 587
 emailFromAddress: "eve@vrtbl.com"
-smtpSecure: true
+smtpSecure: false
 smtpCredentials:
   enabled: true
   existingSecret: smtp-credentials
