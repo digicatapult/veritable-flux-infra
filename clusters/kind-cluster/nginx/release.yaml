@@ -14,7 +14,7 @@ spec:
       chart: nginx-ingress-controller
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: bitnami-oci
   interval: 10m0s
   # Default values
   # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml

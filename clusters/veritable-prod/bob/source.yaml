@@ -15,3 +15,13 @@ metadata:
 spec:
   interval: 10m
   url: https://digicatapult.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: bitnami-oci
+  namespace: bob
+spec:
+  type: "oci"
+  interval: 10m
+  url: oci://registry-1.docker.io/bitnamicharts
