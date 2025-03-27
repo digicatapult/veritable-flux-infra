@@ -33,3 +33,4 @@ smtpCredentials:
   existingSecret: smtp-credentials
   existingSecretUserKey: smtp_username
   existingSecretPasswordKey: smtp_client_secret
+logLevel: trace
