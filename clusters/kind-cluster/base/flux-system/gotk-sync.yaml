@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: bug/fix_kind_log_level
+    branch: main
   url: https://github.com/digicatapult/veritable-flux-infra.git
 
 ---
