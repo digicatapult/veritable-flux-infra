@@ -1,7 +1,7 @@
 label: "bob veritable-cloudgent REST API"
 walletkey:
   secret: bob
-logLevel: 2
+logLevel: trace
 endpoint: ["http://bob-veritable-cloudagent.bob.svc.cluster.local:5002/"]
 
 ingress:
