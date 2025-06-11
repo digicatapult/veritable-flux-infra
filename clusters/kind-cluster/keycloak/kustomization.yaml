@@ -4,6 +4,7 @@ namespace: keycloak
 resources:
   - release.yaml
   - source.yaml
+  - realms.yaml
 configMapGenerator:
   - name: keycloak-values
     files:
