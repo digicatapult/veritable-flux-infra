@@ -5,6 +5,9 @@ ingress:
   hostname: localhost
   annotations:
     nginx.ingress.kubernetes.io/enable-global-auth: "false"
+postgresql:
+  auth:
+    password: postgres
 extraEnvVars:
   - name: KC_HOSTNAME_ADMIN
     value: "http://localhost:3080/auth/"
