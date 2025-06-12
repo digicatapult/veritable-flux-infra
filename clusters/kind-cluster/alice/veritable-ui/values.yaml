@@ -1,0 +1,23 @@
+label: "Alice Veritable UI"
+apiSwaggerTitle: Alice
+apiSwaggerBgColor: "#38b6ff"
+idpClientId: "alice"
+idpPublicURLPrefix: http://localhost:3080
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
+idpPathPrefix: /auth
+externalCloudagent:
+  host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
+  port: "3000"
+demoMode: true
+postgresql:
+  auth:
+    password: postgres
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: alice
+ingress:
+  hostname: localhost
+  ingressClassName: nginx
+logLevel: trace

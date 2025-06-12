@@ -1,11 +1,12 @@
-label: "Alice veritable-cloudgent REST API"
+label: "Alice Veritable Cloud Agent REST API"
 walletkey:
   secret: alice
 logLevel: trace
 endpoint: ["http://alice-veritable-cloudagent.alice.svc.cluster.local:5002/"]
-
 ingress:
-  enabled: false
+  enabled: true
+  hostname: localhost
+  ingressClassName: nginx
 postgresql:
   auth:
     password: postgres

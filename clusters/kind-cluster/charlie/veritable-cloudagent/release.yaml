@@ -8,12 +8,16 @@ spec:
   install:
     remediation:
       retries: -1
+  upgrade:
+    remediation:
+      retries: -1
   chart:
     spec:
       chart: veritable-cloudagent
       sourceRef:
         kind: HelmRepository
         name: digicatapult
+      version: 2.3.92
   valuesFrom:
   - kind: ConfigMap
     name: charlie-values
