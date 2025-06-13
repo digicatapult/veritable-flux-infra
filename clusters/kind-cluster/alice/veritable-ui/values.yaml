@@ -17,7 +17,7 @@ smtpCredentials:
   userSecret: username
   passwordSecret: password
 invitationPin:
-  enabled: true
+  enabled: false
   secret: secret
 postgresql:
   auth:
