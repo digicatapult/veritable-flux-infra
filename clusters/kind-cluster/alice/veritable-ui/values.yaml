@@ -19,5 +19,4 @@ postgresql:
       namespace: alice
 ingress:
   hostname: localhost
-  ingressClassName: nginx
 logLevel: trace
