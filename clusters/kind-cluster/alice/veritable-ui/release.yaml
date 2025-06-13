@@ -23,4 +23,4 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: alice-ui-values
-      valuesKey: ui-values.yaml
+      valuesKey: values-veritable-ui.yaml
