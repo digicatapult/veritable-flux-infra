@@ -13,7 +13,7 @@ smtpHost: localhost
 smtpSecure: false
 smtpPort: 25
 smtpCredentials:
-  enabled: true
+  enabled: false
   userSecret: username
   passwordSecret: password
 invitationPin:
