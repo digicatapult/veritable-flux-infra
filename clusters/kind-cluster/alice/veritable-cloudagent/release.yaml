@@ -20,6 +20,6 @@ spec:
       version: 2.3.92
   valuesFrom:
   - kind: ConfigMap
-    name: alice-values
+    name: alice-cloudagent-values
     valuesKey: values-veritable-cloudagent.yaml
   interval: 10m0s

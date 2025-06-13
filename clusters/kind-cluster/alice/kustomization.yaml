@@ -4,10 +4,14 @@ namespace: alice
 resources:
   - source.yaml
   - veritable-cloudagent
+  - veritable-ui
 configMapGenerator:
-  - name: alice-values
+  - name: alice-cloudagent-values
     files:
       - values-veritable-cloudagent.yaml=veritable-cloudagent/values.yaml
+  - name: alice-ui-values
+    files:
+      - values-veritable-ui.yaml=veritable-ui/values.yaml
 configurations:
   - kustomize-config.yaml
 generatorOptions:

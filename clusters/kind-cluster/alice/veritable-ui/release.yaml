@@ -22,5 +22,5 @@ spec:
   interval: 10m0s
   valuesFrom:
     - kind: ConfigMap
-      name: alice-values
+      name: alice-ui-values
       valuesKey: ui-values.yaml
