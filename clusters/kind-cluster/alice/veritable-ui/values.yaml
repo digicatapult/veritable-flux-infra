@@ -12,8 +12,14 @@ demoMode: true
 smtpHost: localhost
 smtpSecure: false
 smtpPort: 25
-smtpUser: ""
-smtpPass: ""
+extraEnvVars:
+  - name: SMTP_USER
+    value: "username"
+  - name: SMTP_PASS
+    value: "password"
+invitationPin:
+  enabled: true
+  secret: secret
 postgresql:
   auth:
     password: postgres
