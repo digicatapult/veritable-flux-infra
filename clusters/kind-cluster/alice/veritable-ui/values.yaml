@@ -12,11 +12,10 @@ demoMode: true
 smtpHost: localhost
 smtpSecure: false
 smtpPort: 25
-extraEnvVars:
-  - name: SMTP_USER
-    value: "username"
-  - name: SMTP_PASS
-    value: "password"
+smtpCredentials:
+  enabled: true
+  userSecret: username
+  passwordSecret: password
 invitationPin:
   enabled: true
   secret: secret
