@@ -9,6 +9,11 @@ externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
 demoMode: true
+smtpHost: localhost
+smtpSecure: false
+smtpPort: 25
+smtpUser: ""
+smtpPass: ""
 postgresql:
   auth:
     password: postgres
