@@ -5,7 +5,7 @@ idpClientId: "alice"
 idpPublicURLPrefix: http://localhost:3080
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
 externalCloudagent:
-  host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
+  host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
 demoMode: true
 smtpHost: localhost
