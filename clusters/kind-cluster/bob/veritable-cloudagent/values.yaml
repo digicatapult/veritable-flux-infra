@@ -4,9 +4,7 @@ walletkey:
 logLevel: trace
 endpoint: ["http://bob-veritable-cloudagent.bob.svc.cluster.local:5002/"]
 ingress:
-  enabled: true
-  hostname: localhost
-  ingressClassName: nginx
+  enabled: false
 postgresql:
   auth:
     password: postgres
