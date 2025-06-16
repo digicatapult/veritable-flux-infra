@@ -2,6 +2,7 @@ label: "Alice Veritable UI"
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice-swagger"
+idpPathPrefix: /auth
 idpPublicURLPrefix: http://localhost:3080
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
 externalCloudagent:
