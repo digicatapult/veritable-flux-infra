@@ -6,11 +6,9 @@ resources:
   - veritable-cloudagent
   - veritable-ui
 configMapGenerator:
-  - name: alice-cloudagent-values
+  - name: alice-values
     files:
       - values-veritable-cloudagent.yaml=veritable-cloudagent/values.yaml
-  - name: alice-ui-values
-    files:
       - values-veritable-ui.yaml=veritable-ui/values.yaml
 configurations:
   - kustomize-config.yaml
