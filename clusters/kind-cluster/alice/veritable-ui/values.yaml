@@ -1,10 +1,10 @@
 label: "Alice Veritable UI"
+publicUrl: http://localhost:3080
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice-swagger"
-publicUrl: http://localhost:3080
-idpPublicURLPrefix: http://localhost:3080
-idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
+idpPublicURLPrefix: http://localhost:3080/realms/simple/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/simple/protocol/openid-connect
 externalCloudagent:
   host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
