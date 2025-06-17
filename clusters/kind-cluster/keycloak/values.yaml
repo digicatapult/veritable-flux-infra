@@ -3,8 +3,6 @@ proxyHeaders: xforwarded
 ingress:
   enabled: true
   hostname: localhost
-  annotations:
-    nginx.ingress.kubernetes.io/enable-global-auth: "false"
 postgresql:
   auth:
     password: postgres
@@ -24,3 +22,6 @@ extraVolumes:
 extraVolumeMounts:
   - mountPath: /opt/bitnami/keycloak/data/import
     name: realm-volume
+resourcesPreset: none
+logging:
+  level: DEBUG
