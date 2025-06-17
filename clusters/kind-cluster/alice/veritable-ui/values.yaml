@@ -32,4 +32,22 @@ postgresql:
       namespace: alice
 ingress:
   hostname: localhost
+  extraPaths:
+    - path: /auth
+      pathType: Prefix
+      backend:
+        service:
+          name: keycloak
+          port:
+            number: 3080
+    - path: /
+      pathType: Prefix
+      backend:
+        service:
+          name: ui-veritable-ui
+          port:
+            number: 3000
+  ingressClassName: nginx
+  service:
+    type: ClusterIP
 logLevel: trace
