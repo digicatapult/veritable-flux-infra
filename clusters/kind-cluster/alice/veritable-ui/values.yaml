@@ -30,6 +30,4 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: alice
-ingress:
-  hostname: localhost
 logLevel: trace
