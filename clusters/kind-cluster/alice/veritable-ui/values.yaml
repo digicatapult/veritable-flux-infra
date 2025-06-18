@@ -33,13 +33,21 @@ postgresql:
 ingress:
   hostname: localhost
   extraPaths:
-    - path: /auth
+    - path: /
+      pathType: Prefix
+    - path: /(api-docs(/.*)?)
+      pathType: Prefix
+    - path: /(swagger(/.*)?)
+      pathType: Prefix
+    - path: /(auth(/.*)?)
       pathType: Prefix
       backend:
         service:
           name: keycloak
           port:
-            number: 3080
+            name: http
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
   ingressClassName: nginx
   service:
     type: ClusterIP
