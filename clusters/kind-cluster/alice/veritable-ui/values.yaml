@@ -40,13 +40,6 @@ ingress:
           name: keycloak
           port:
             number: 3080
-    - path: /
-      pathType: Prefix
-      backend:
-        service:
-          name: ui-veritable-ui
-          port:
-            number: 3000
   ingressClassName: nginx
   service:
     type: ClusterIP
