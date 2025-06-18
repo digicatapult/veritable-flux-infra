@@ -35,11 +35,27 @@ ingress:
   extraPaths:
     - path: /
       pathType: Prefix
+      backend:
+        service:
+          name: ui-veritable-ui
+          port:
+            number: 3000
     - path: /(api-docs(/.*)?)
       pathType: Prefix
+      backend:
+        service:
+          name: ui-veritable-ui
+          port:
+            number: 3000
     - path: /(swagger(/.*)?)
       pathType: Prefix
+      backend:
+        service:
+          name: ui-veritable-ui
+          port:
+            number: 3000
   annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
   ingressClassName: nginx
   service:
