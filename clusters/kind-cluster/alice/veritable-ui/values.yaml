@@ -5,9 +5,6 @@ apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice-swagger"
 idpPublicURLPrefix: http://localhost:3080
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
-idpAuthPath: /auth
-idpTokenPath: /auth/realms/simple/protocol/openid-connect/token
-idpJWKSPath: /auth/realms/simple/protocol/openid-connect/certs
 externalCloudagent:
   host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
