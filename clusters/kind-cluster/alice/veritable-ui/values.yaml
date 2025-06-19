@@ -3,7 +3,6 @@ publicUrl: http://localhost:3080
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice-swagger"
-idpAuthPath: "/auth/"
 idpPublicURLPrefix: http://localhost:3080
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
 externalCloudagent:
