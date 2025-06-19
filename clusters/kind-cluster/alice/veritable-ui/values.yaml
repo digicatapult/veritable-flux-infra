@@ -3,6 +3,7 @@ publicUrl: http://localhost:3080
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice-swagger"
+idpClientSecret: "0jZ2jkXzW3HNxqlNQNmWOW3E5Knw68It"
 idpPublicURLPrefix: http://localhost:3080
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local
 externalCloudagent:
@@ -29,28 +30,6 @@ postgresql:
       namespace: alice
 ingress:
   hostname: localhost
-  extraPaths:
-    - path: /
-      pathType: Prefix
-      backend:
-        service:
-          name: ui-veritable-ui
-          port:
-            number: 3000
-    - path: /(api-docs(/.*)?)
-      pathType: Prefix
-      backend:
-        service:
-          name: ui-veritable-ui
-          port:
-            number: 3000
-    - path: /(swagger(/.*)?)
-      pathType: Prefix
-      backend:
-        service:
-          name: ui-veritable-ui
-          port:
-            number: 3000
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
