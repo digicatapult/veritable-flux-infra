@@ -16,7 +16,7 @@ kubectl -n keycloak get secret keycloak \
   -o jsonpath='{.data.admin-password}' | base64 -d && echo
 ```
 
-This cluster will have a single realm, "simple", which has several clients: alice-swagger, bob-swagger, and charlie-swagger.
+This cluster will have a single realm, "simple", with several clients: alice-swagger, bob-swagger, and charlie-swagger.
 
 Alice is already configured to use the Veritable UI, which has its Swagger interface available at http://localhost:3080/swagger.
 
