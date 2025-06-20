@@ -5,7 +5,9 @@ Authentication for Veritable is managed using [`Keycloak`](https://www.keycloak.
 
 ## Kind cluster
 
-After following the instructions in the [getting started](./getting-started.md) guide on creating the Kind cluster, you should now be able to access the admin console for Keycloak at http://localhost:3080/auth/.
+> Note that to avoid collisions with application logic, the Kind cluster has its Keycloak deployment configured to use the `/auth2` relative HTTP path. Keep this in mind when debugging issues across the different environments.
+
+After following the instructions in the [getting started](./getting-started.md) guide on creating the Kind cluster, you should now be able to access the admin console for Keycloak at http://localhost:3080/auth2/.
 
 The default username is "user" and its password can be retrieved with the following:
 
