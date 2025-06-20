@@ -16,15 +16,15 @@ kubectl -n keycloak get secret keycloak \
   -o jsonpath='{.data.admin-password}' | base64 -d && echo
 ```
 
-This cluster will have a single realm, "simple", which has several clients preconfigured: alice-swagger, bob-swagger, and charlie-swagger. They may need the cloudagent-admin service forwarding before the Swagger UIs can be accessed:
+This cluster will have a single realm, "simple", which has several clients: alice-swagger, bob-swagger, and charlie-swagger.
+
+Alice is already configured to use the Veritable UI, which has its Swagger interface available at http://localhost:3080/swagger.
+
+To forward the veritable-cloudagent UI:
 
 ```sh
 kubectl port-forward -n alice \
   svc/alice-veritable-cloudagent-admin 3000:3000
-
-kubectl port-forward -n bob \
-  svc/bob-veritable-cloudagent-admin 3001:3000
-
-kubectl port-forward -n charlie \
-  svc/charlie-veritable-cloudagent-admin 3002:3000
 ```
+
+A Swagger console for the Alice's Veritable Cloud Agent would then be available at http://localhost:3000/swagger.
