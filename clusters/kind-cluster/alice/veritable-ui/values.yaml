@@ -3,7 +3,6 @@ publicUrl: http://localhost:3080
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice"
-idpClientSecret: "0jZ2jkXzW3HNxqlNQNmWOW3E5Knw68It"
 idpPublicURLPrefix: http://localhost:3080/auth2/realms/simple/protocol/openid-connect
 idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth2/realms/simple/protocol/openid-connect
 externalCloudagent:
