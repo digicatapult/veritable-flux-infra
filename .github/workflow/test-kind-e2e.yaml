@@ -107,13 +107,6 @@ jobs:
             -f conclusion="success"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Return to parent branch and delete the surrogate
-        if: success()
-        run: |
-          parent=$(echo ${GITHUB_HEAD_REF} | sed "s#kind/renovate#renovate#" -)
-          echo "${parent}"
-          git checkout "${parent}" && \
-          git branch -D "kind/${parent}"
       - name: Describe failing pods
         if: failure()
         run: |
@@ -148,3 +141,10 @@ jobs:
       - name: Report all resources
         if: failure()
         run: flux get all --all-namespaces
+      - name: Return to parent branch and delete the surrogate
+        if: always()
+        run: |
+          parent=$(echo ${GITHUB_HEAD_REF} | sed "s#kind/renovate#renovate#" -)
+          echo "${parent}"
+          git checkout "${parent}" && \
+          git branch -D "kind/${parent}"
