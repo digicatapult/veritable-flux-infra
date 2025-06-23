@@ -131,4 +131,4 @@ jobs:
           parent=$(echo ${GITHUB_HEAD_REF} | sed "s#kind/renovate#renovate#" -)
           echo "${parent}"
           git checkout "${parent}" && \
-          git branch -D "kind/${parent}"
+          git push origin -d "kind/${parent}"
