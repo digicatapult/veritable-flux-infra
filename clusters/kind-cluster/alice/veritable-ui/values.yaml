@@ -1,0 +1,37 @@
+label: "Alice Veritable UI"
+publicUrl: http://localhost:3080
+apiSwaggerTitle: Alice
+apiSwaggerBgColor: "#38b6ff"
+idpClientId: "alice"
+idpPublicURLPrefix: http://localhost:3080/auth2/realms/simple/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth2/realms/simple/protocol/openid-connect
+externalCloudagent:
+  host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
+  port: "3000"
+demoMode: true
+smtpHost: localhost
+smtpSecure: false
+smtpPort: 25
+smtpCredentials:
+  enabled: false
+  userSecret: username
+  passwordSecret: password
+invitationPin:
+  enabled: true
+  secret: secret
+postgresql:
+  auth:
+    password: postgres
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: alice
+ingress:
+  hostname: localhost
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+  ingressClassName: nginx
+  service:
+    type: ClusterIP
+logLevel: trace

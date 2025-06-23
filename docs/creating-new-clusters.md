@@ -106,9 +106,9 @@ As mentioned in [Managing Secrets](./managing-secrets.md), we encrypt the secret
 Run the following commands to generate a PGP key:
 
 ```sh
-mktemp -d -t .sqnc-cluster-gpg
+mktemp -d -t .veritable-cluster-gpg
 
-GNUPGHOME=.sqnc-cluster-gpg gpg \
+GNUPGHOME=.veritable-cluster-gpg gpg \
 --quick-gen-key --batch \
 --passphrase '' --yes $CLUSTER_NAME
 ```
@@ -118,7 +118,7 @@ Export the public key as a certificate into the `./certs` directory:
 ```sh
 mkdir certs/$CLUSTER_NAME
 
-GNUPGHOME=.sqnc-cluster-gpg gpg \
+GNUPGHOME=.veritable-cluster-gpg gpg \
 --output certs/$CLUSTER_NAME/$CLUSTER_NAME.asc \
 --export --armor $CLUSTER_NAME
 ```
@@ -128,7 +128,7 @@ Commit this and push it up to your branch.
 Import the new key into the cluster:
 
 ```sh
-GNUPGHOME=.sqnc-cluster-gpg gpg \
+GNUPGHOME=.veritable-cluster-gpg gpg \
 --export-secret-keys \
 --armor $CLUSTER_NAME | \
 kubectl create secret generic sops-gpg \
@@ -158,5 +158,5 @@ sops.asc:  5046 bytes
 Delete the temporary directory used while creating the key:
 
 ```sh
-rm -rf .sqnc-cluster-gpg
+rm -rf .veritable-cluster-gpg
 ```
