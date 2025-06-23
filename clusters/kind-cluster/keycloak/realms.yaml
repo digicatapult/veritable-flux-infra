@@ -12,7 +12,7 @@ data:
       "clients": [
           {
             "clientId": "alice",
-            "name": "alice-ui",
+            "name": "Alice UI",
             "description": "",
             "rootUrl": "http://localhost:3080/",
             "adminUrl": "http://localhost:3080/",
