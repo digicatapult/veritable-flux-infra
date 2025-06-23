@@ -8,6 +8,9 @@ spec:
   install:
     remediation:
       retries: -1
+  upgrade:
+    remediation:
+      retries: -1
   releaseName: nginx-ingress-controller
   chart:
     spec:

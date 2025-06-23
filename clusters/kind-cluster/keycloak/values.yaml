@@ -1,18 +1,16 @@
-httpRelativePath: /auth/
+httpRelativePath: /auth2/
 proxyHeaders: xforwarded
 ingress:
   enabled: true
   hostname: localhost
-  annotations:
-    nginx.ingress.kubernetes.io/enable-global-auth: "false"
 postgresql:
   auth:
     password: postgres
 extraEnvVars:
   - name: KC_HOSTNAME_ADMIN
-    value: "http://localhost:3080/auth/"
+    value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME
-    value: "http://localhost:3080/auth/"
+    value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME_DEBUG
     value: "true"
 extraStartupArgs: "--import-realm"
@@ -24,3 +22,6 @@ extraVolumes:
 extraVolumeMounts:
   - mountPath: /opt/bitnami/keycloak/data/import
     name: realm-volume
+resourcesPreset: none
+logging:
+  level: DEBUG

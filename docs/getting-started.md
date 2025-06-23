@@ -122,7 +122,7 @@ To test your changes, you will need to push them to a unique working branch and 
 flux create source git flux-system \
 --branch $BRANCH_NAME \
 --namespace flux-system \
---url https://github.com/digicatapult/bridgeAI-gitops-infra.git
+--url https://github.com/digicatapult/veritable-flux-infra.git
 ```
 
 FluxCD will now reconcile the changes with the existing deployment. The `flux` command line tool can also be used to check the status of different resources, to suspend or resume reconciliation, and to force the synchronisation.

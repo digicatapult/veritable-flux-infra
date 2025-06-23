@@ -1,9 +1,8 @@
-label: "Charlie veritable-cloudgent REST API"
+label: "Charlie Veritable Cloud Agent REST API"
 walletkey:
   secret: charlie
 logLevel: trace
 endpoint: ["http://charlie-veritable-cloudagent.bob.svc.cluster.local:5002/"]
-
 ingress:
   enabled: false
 postgresql:
