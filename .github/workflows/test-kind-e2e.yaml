@@ -91,22 +91,6 @@ jobs:
           kubectl get kustomizations -A
           kubectl wait helmrelease --all --all-namespaces --for=condition=ready --timeout=10m
           kubectl get helmreleases -A
-      - name: Return GitOps branch to main
-        if: success()
-        run: |
-          sed -i -r "s#(branch:).*#\1 main#" \
-            ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
-          git add ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
-          git commit -am "Return GitOps branch to main"
-          git push -u origin ${GITHUB_HEAD_REF} && \
-          gh api --method POST -H "Accept: application/vnd.github+json" \
-            /repos/${{ github.repository }}/check-runs \
-            -f name="gotk-sync.yaml status check" \
-            -f head_sha=$(git log -n 1 ${GITHUB_HEAD_REF} --pretty=format:"%H") \
-            -f status="completed" \
-            -f conclusion="success"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Describe failing pods
         if: failure()
         run: |
