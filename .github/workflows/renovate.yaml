@@ -1,0 +1,45 @@
+name: renovate
+
+on:
+  repository_dispatch:
+    types:
+      - renovate
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'renovate.config.js'
+      - '.github/workflows/renovate.yaml'
+      - 'clusters/kind-cluster/**'
+      - 'scripts/**'
+  # Run every hour
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get GitHub App token
+        id: get_token
+        uses: tibdex/github-app-token@v2.1.0
+        with:
+          app_id: ${{ secrets.RENOVATE_APP_ID }}
+          private_key: ${{ secrets.RENOVATE_APP_SECRET }}
+
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      - name: Run self-hosted Renovate bot
+        uses: renovatebot/github-action@v42.0.4
+        with:
+          token: ${{ steps.get_token.outputs.token }}
+          configurationFile: renovate.config.js
+          renovate-version: full
+          docker-user: root
+          docker-cmd-file: .github/renovate-flux-installer.sh
+        env:
+          LOG_LEVEL: debug
+          RENOVATE_SELF_HOSTED: true
+          RENOVATE_REPOSITORIES: "[\"digicatapult/veritabe-flux-infra\"]"
