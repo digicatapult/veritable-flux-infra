@@ -42,4 +42,4 @@ jobs:
         env:
           LOG_LEVEL: debug
           RENOVATE_SELF_HOSTED: true
-          RENOVATE_REPOSITORIES: "[\"digicatapult/veritabe-flux-infra\"]"
+          RENOVATE_REPOSITORIES: "[\"digicatapult/veritable-flux-infra\"]"
