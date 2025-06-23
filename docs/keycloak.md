@@ -18,7 +18,7 @@ kubectl -n keycloak get secret keycloak \
 
 This cluster will have a single realm, "simple", with several clients: alice-swagger, bob-swagger, and charlie-swagger.
 
-Alice is already configured to use the Veritable UI, which has its Swagger interface available at http://localhost:3080/swagger.
+Alice is already configured to use the Veritable UI, which has its Swagger interface available at http://localhost:3080/swagger. When the UI at http://localhost:3080/ is accessed for the first time, e.g. whenever the cluster is brought up afresh, the user will also need to register a new user account with the local Keycloak instance.
 
 To forward the veritable-cloudagent UI:
 
