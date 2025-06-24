@@ -69,8 +69,6 @@ jobs:
         run: |
           surrogate="kind/${GITHUB_HEAD_REF}"
           echo "${surrogate}"
-          git fetch origin "${surrogate}:${surrogate}"
-          git checkout "${surrogate}"
           sed -i -r "s#(branch:).*#\1 $surrogate#" \
             ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
           git add ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
