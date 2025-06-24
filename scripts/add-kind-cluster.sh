@@ -29,6 +29,11 @@ if [ "${running}" != 'true' ]; then
 fi
 
 # create a cluster with the local registry enabled in containerd
+config_file="kind-cluster-config.yaml"
+if [ -f "$(dirname $0)/$config_file" ]; then
+  echo "Using $config_file"
+  kind create cluster --name veritable-flux-infra --config="$(dirname $0)/$config_file"
+else
 cat <<EOF | kind create cluster --name veritable-flux-infra --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -53,6 +58,7 @@ nodes:
     protocol: tcp
 - role: worker
 EOF
+fi
 
 # connect the registry to the cluster network
 # (the network may already be connected)
