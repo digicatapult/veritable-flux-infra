@@ -67,7 +67,7 @@ jobs:
       - name: Patch GitOps branch to match PR
         if: success()
         run: |
-          surrogate=${GITHUB_HEAD_REF}
+          surrogate="kind/${GITHUB_HEAD_REF}"
           echo "${surrogate}"
           git fetch origin "${surrogate}:${surrogate}"
           git checkout "${surrogate}"
@@ -79,14 +79,15 @@ jobs:
       - name: Reconcile the update
         if: success()
         run: |
+          surrogate="kind/${GITHUB_HEAD_REF}"
           flux suspend kustomization --all
           flux create source git flux-system \
           --url=${{ github.event.repository.html_url }} \
-          --branch=${GITHUB_HEAD_REF} \
+          --branch=${surrogate} \
           --username=${GITHUB_ACTOR} \
           --password=${{ secrets.GITHUB_TOKEN }}
           flux resume kustomization --all
-          message=$(echo ${GITHUB_HEAD_REF}"@sha1:"$(git log -n 1 ${GITHUB_HEAD_REF} --pretty=format:"%H"))
+          message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
           kubectl wait kustomization --all --all-namespaces --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=10m
           kubectl get kustomizations -A
           kubectl wait helmrelease --all --all-namespaces --for=condition=ready --timeout=10m
