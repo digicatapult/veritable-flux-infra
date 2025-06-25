@@ -11,7 +11,7 @@ spec:
   releaseName: cloudagent
   chart:
     spec:
-      version: 2.4.1
+      version: 2.4.5
       chart: veritable-cloudagent
       sourceRef:
         kind: HelmRepository
