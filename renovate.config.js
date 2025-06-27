@@ -21,7 +21,7 @@ module.exports = (config = {}) => {
     prConcurrentLimit: 20,
     recreateWhen: "always",
     flux: {
-      managerFilePatterns: ["^clusters/.*\\.ya?ml$"],
+      managerFilePatterns: [".*\\.ya?ml$"],
     },
     packageRules: [
       {
