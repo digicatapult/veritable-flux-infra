@@ -13,7 +13,7 @@ module.exports = (config = {}) => {
 
   return {
     $schema: "https://docs.renovatebot.com/renovate-schema.json",
-    extends: "github>digicatapult/renovate-config:flux.json",
+    extends: ["github>digicatapult/renovate-config:flux.json"],
     onboarding: false,
     requireConfig: false
   };
