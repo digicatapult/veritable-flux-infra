@@ -21,7 +21,7 @@ module.exports = (config = {}) => {
     prConcurrentLimit: 20,
     recreateWhen: "always",
     flux: {
-      managerFilePatterns: [".*\\.ya?ml$"],
+      managerFilePatterns: ["**/*.yaml", "**/*.yml"],
     },
     packageRules: [
       {
@@ -34,7 +34,7 @@ module.exports = (config = {}) => {
       },
       {
         matchManagers: ["flux"],
-        matchPaths: ["^clusters/kind-cluster/.*\\.ya?ml$"],
+        includePaths: ["clusters/kind-cluster/**/*.yml", "clusters/kind-cluster/**/*.yaml"],
         automerge: true,
         addLabels: ["automerge", "kind"],
         separateMajorMinor: true,
@@ -44,7 +44,7 @@ module.exports = (config = {}) => {
       },
       {
         matchManagers: ["flux"],
-        matchPaths: ["^clusters/(?!kind-cluster/)[^/]+/.*\\.ya?ml$"],
+        includePaths: ["clusters/veritable-prod/**/*.yml", "clusters/veritable-prod/**/*.yaml"],
         automerge: false,
         addLabels: ["production"],
         separateMajorMinor: true,
