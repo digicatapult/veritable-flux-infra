@@ -35,19 +35,23 @@ kube-state-metrics:
   rbac:
     extraRules:
       - apiGroups:
-          - source.toolkit.fluxcd.io
-          - kustomize.toolkit.fluxcd.io
           - helm.toolkit.fluxcd.io
+          - image.toolkit.fluxcd.io
+          - kustomize.toolkit.fluxcd.io
           - notification.toolkit.fluxcd.io
+          - source.toolkit.fluxcd.io
         resources:
-          - gitrepositories
-          - buckets
-          - helmrepositories
-          - helmcharts
-          - ocirepositories
-          - kustomizations
-          - helmreleases
           - alerts
+          - buckets
+          - gitrepositories
+          - helmcharts
+          - helmreleases
+          - helmrepositories
+          - imagepolicies
+          - imagerepositories
+          - imageupdateautomations
+          - kustomizations
+          - ocirepositories
           - providers
           - receivers
         verbs: [ "list", "watch" ]
