@@ -1,25 +1,53 @@
 # pulled from https://github.com/fluxcd/flux2-monitoring-example/blob/main/monitoring/controllers/kube-prometheus-stack/kube-state-metrics-config.yaml
 # configuration docs: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics#configuration
 kube-state-metrics:
-  collectors: [ ]
+  collectors:
+    - certificatesigningrequests
+    - configmaps
+    - cronjobs
+    - daemonsets
+    - deployments
+    - endpoints
+    - horizontalpodautoscalers
+    - ingresses
+    - jobs
+    - leases
+    - limitranges
+    - mutatingwebhookconfigurations
+    - namespaces
+    - networkpolicies
+    - nodes
+    - persistentvolumeclaims
+    - persistentvolumes
+    - poddisruptionbudgets
+    - pods
+    - replicasets
+    - replicationcontrollers
+    - resourcequotas
+    - secrets
+    - services
+    - statefulsets
+    - storageclasses
+    - validatingwebhookconfigurations
+    - volumeattachments
   extraArgs:
-    - --custom-resource-state-only=true
+    - --custom-resource-state-only=false
   rbac:
     extraRules:
       - apiGroups:
-          - source.toolkit.fluxcd.io
-          - kustomize.toolkit.fluxcd.io
           - helm.toolkit.fluxcd.io
+          - kustomize.toolkit.fluxcd.io
           - notification.toolkit.fluxcd.io
+          - source.toolkit.fluxcd.io
         resources:
-          - gitrepositories
-          - buckets
-          - helmrepositories
-          - helmcharts
-          - ocirepositories
-          - kustomizations
-          - helmreleases
           - alerts
+          - buckets
+          - gitrepositories
+          - helmcharts
+          - helmreleases
+          - helmrepositories
+          - kustomizations
+          - ocirepositories
           - providers
           - receivers
         verbs: [ "list", "watch" ]
@@ -214,57 +242,3 @@ kube-state-metrics:
                   ready: [ status, conditions, "[type=Ready]", status ]
                   suspended: [ spec, suspend ]
                   webhook_path: [ status, webhookPath ]
-          - groupVersionKind:
-              group: image.toolkit.fluxcd.io
-              version: v1beta2
-              kind: ImageRepository
-            metricNamePrefix: gotk
-            metrics:
-              - name: "resource_info"
-                help: "The current state of a GitOps Toolkit resource."
-                each:
-                  type: Info
-                  info:
-                    labelsFromPath:
-                      name: [ metadata, name ]
-                labelsFromPath:
-                  exported_namespace: [ metadata, namespace ]
-                  ready: [ status, conditions, "[type=Ready]", status ]
-                  suspended: [ spec, suspend ]
-                  image: [ spec, image ]
-          - groupVersionKind:
-              group: image.toolkit.fluxcd.io
-              version: v1beta2
-              kind: ImagePolicy
-            metricNamePrefix: gotk
-            metrics:
-              - name: "resource_info"
-                help: "The current state of a GitOps Toolkit resource."
-                each:
-                  type: Info
-                  info:
-                    labelsFromPath:
-                      name: [ metadata, name ]
-                labelsFromPath:
-                  exported_namespace: [ metadata, namespace ]
-                  ready: [ status, conditions, "[type=Ready]", status ]
-                  suspended: [ spec, suspend ]
-                  source_name: [ spec, imageRepositoryRef, name ]
-          - groupVersionKind:
-              group: image.toolkit.fluxcd.io
-              version: v1beta1
-              kind: ImageUpdateAutomation
-            metricNamePrefix: gotk
-            metrics:
-              - name: "resource_info"
-                help: "The current state of a GitOps Toolkit resource."
-                each:
-                  type: Info
-                  info:
-                    labelsFromPath:
-                      name: [ metadata, name ]
-                labelsFromPath:
-                  exported_namespace: [ metadata, namespace ]
-                  ready: [ status, conditions, "[type=Ready]", status ]
-                  suspended: [ spec, suspend ]
-                  source_name: [ spec, sourceRef, name ]
