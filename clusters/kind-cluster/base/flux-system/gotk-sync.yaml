@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: test/add_monitoring_repository
   url: https://github.com/digicatapult/veritable-flux-infra.git
 
 ---
