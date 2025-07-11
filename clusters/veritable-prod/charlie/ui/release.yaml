@@ -11,7 +11,7 @@ spec:
   releaseName: ui
   chart:
     spec:
-      version: 1.1.2
+      version: 1.1.22
       chart: veritable-ui
       sourceRef:
         kind: HelmRepository
