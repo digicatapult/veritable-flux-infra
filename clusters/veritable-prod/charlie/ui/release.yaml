@@ -43,3 +43,7 @@ spec:
       name: admin-email-address
       valuesKey: address
       targetPath: emailAdminAddress
+    - kind: Secret
+      name: charlie-ui-postgres-creds
+      valuesKey: password
+      targetPath: postgresql.auth.password

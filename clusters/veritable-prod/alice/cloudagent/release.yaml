@@ -27,3 +27,7 @@ spec:
       name: alice-wallet-key
       valuesKey: key
       targetPath: walletKey.secret
+    - kind: Secret
+      name: alice-cloudagent-postgres-creds
+      valuesKey: password
+      targetPath: postgresql.auth.password

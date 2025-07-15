@@ -27,3 +27,7 @@ spec:
       name: charlie-wallet-key
       valuesKey: key
       targetPath: walletKey.secret
+    - kind: Secret
+      name: charlie-cloudagent-postgres-creds
+      valuesKey: password
+      targetPath: postgresql.auth.password
