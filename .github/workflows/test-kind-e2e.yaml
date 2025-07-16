@@ -86,7 +86,14 @@ jobs:
           --password=${{ secrets.GITHUB_TOKEN }}
           flux resume kustomization --all
           message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
-          kubectl wait kustomization --all --all-namespaces --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=10m
+          sets=$(kubectl get kustomizations -A -o jsonpath='{range .items[*]}{@.metadata.namespace}{"#"}{@.metadata.name}{"#"}{@.spec.sourceRef.name}{"\n"}{end}')
+          ignore_set="monitoring-flux-infra"
+          local_sets=$(echo "${sets}" | grep -v $ignore_set)
+          for set in $local_sets; do
+            ns=$(echo ${set} | cut -d "#" -f 1 | awk '{print $1}')
+            k=$(echo ${set} | cut -d "#" -f 2 | awk '{print $1}')
+            kubectl wait kustomization "${k}" -n "${ns}" --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=10m
+          done
           kubectl get kustomizations -A
           kubectl wait helmrelease --all --all-namespaces --for=condition=ready --timeout=10m
           kubectl get helmreleases -A
