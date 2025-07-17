@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: nginx-sync
+  name: monitoring-sync
   namespace: monitoring
 spec:
   interval: 1m
