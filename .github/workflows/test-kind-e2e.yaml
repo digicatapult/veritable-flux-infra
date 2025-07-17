@@ -87,11 +87,11 @@ jobs:
           flux resume kustomization --all
           message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
           sets=$(kubectl get kustomizations -A -o jsonpath='{range .items[*]}{@.metadata.namespace}{"#"}{@.metadata.name}{"#"}{@.spec.sourceRef.name}{"\n"}{end}')
-          ignore_set="monitoring-flux-infra"
-          local_sets=$(echo "${sets}" | grep -v $ignore_set)
+          ignore_pattern="monitoring-flux-infra"
+          local_sets=$(echo "${sets}" | grep -v $ignore_pattern)
           for set in $local_sets; do
-            ns=$(echo ${set} | cut -d "#" -f 1 | awk '{print $1}')
-            k=$(echo ${set} | cut -d "#" -f 2 | awk '{print $1}')
+            ns=$(echo ${set} | cut -d "#" -f 1)
+            k=$(echo ${set} | cut -d "#" -f 2)
             kubectl wait kustomization "${k}" -n "${ns}" --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=10m
           done
           kubectl get kustomizations -A
