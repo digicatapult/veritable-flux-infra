@@ -51,7 +51,7 @@ module.exports = (config = {}) => {
         matchManagers: ["flux"],
         matchFileNames: [
           "clusters/veritable-prod/**/*.yaml",
-          "clusters/veritable-prod/**/*.yaml"
+          "clusters/veritable-prod/**/*.yml"
         ],
         matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
