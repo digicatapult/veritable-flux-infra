@@ -35,7 +35,10 @@ module.exports = (config = {}) => {
       },
       {
         matchManagers: ["flux"],
-        matchFileNames: ["^clusters/kind-cluster/.*\\.ya?ml$"],
+        matchFileNames: [
+          "clusters/kind-cluster/**/*.yaml",
+          "clusters/kind-cluster/**/*.yml"
+        ],
         matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
@@ -46,7 +49,10 @@ module.exports = (config = {}) => {
       },
       {
         matchManagers: ["flux"],
-        matchFileNames: ["^clusters/veritable-prod/.*\\.ya?ml$"],
+        matchFileNames: [
+          "clusters/veritable-prod/**/*.yaml",
+          "clusters/veritable-prod/**/*.yml"
+        ],
         matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
