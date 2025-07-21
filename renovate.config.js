@@ -43,7 +43,6 @@ module.exports = (config = {}) => {
         separateMajorMinor: true,
         separateMultipleMajor: true,
         separateMinorPatch: false,
-        groupName: "flux - kind-cluster",
         automerge: true,
         addLabels: ["automerge", "kind"],
       },
