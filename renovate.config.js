@@ -43,6 +43,7 @@ module.exports = (config = {}) => {
         separateMajorMinor: true,
         separateMultipleMajor: true,
         separateMinorPatch: false,
+        groupName: null,
         automerge: true,
         addLabels: ["automerge", "kind"],
       },
