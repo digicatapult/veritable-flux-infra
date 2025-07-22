@@ -39,6 +39,12 @@ module.exports = (config = {}) => {
           "clusters/kind-cluster/**/*.yaml",
           "clusters/kind-cluster/**/*.yml"
         ],
+        postUpgradeTasks: {
+          fileFilters: [
+            "clusters/kind-cluster/**/*.yaml",
+            "clusters/kind-cluster/**/*.yml"
+          ]
+        },
         matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
@@ -53,6 +59,12 @@ module.exports = (config = {}) => {
           "clusters/veritable-prod/**/*.yaml",
           "clusters/veritable-prod/**/*.yml"
         ],
+        postUpgradeTasks: {
+          fileFilters: [
+            "clusters/veritable-prod/**/*.yaml",
+            "clusters/veritable-prod/**/*.yml"
+          ]
+        },
         matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
