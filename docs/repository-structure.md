@@ -12,11 +12,6 @@ This repository has the following structure:
 │   │   ├── base
 │   │   │   └── flux-system
 │   │   ├── keycloak
-│   │   ├── monitoring
-│   │   │   ├── configs
-│   │   │   │   └── dashboards
-│   │   │   └── kube-prometheus-stack
-│   │   ├── monitoring-configs
 │   │   └── nginx
 │   └── veritable-prod
 │       ├── persona  # alice, bob, charlie, dave, and eve
@@ -31,10 +26,7 @@ This repository has the following structure:
 │       │   ├── keycloak
 │       │   └── nginx
 │       ├── monitoring
-│       │   ├── dashboards
-│       │   ├── kube-prometheus-stack
 │       │   └── nginx
-│       ├── podmonitors
 │       └── secrets
 ├── docs
 └── scripts
