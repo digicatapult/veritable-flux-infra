@@ -45,7 +45,6 @@ module.exports = (config = {}) => {
             "clusters/kind-cluster/**/*.yml"
           ]
         },
-        matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
         separateMinorPatch: false,
@@ -65,11 +64,10 @@ module.exports = (config = {}) => {
             "clusters/veritable-prod/**/*.yml"
           ]
         },
-        matchUpdateTypes: ["minor", "patch", "pin", "digest"],
         separateMajorMinor: true,
         separateMultipleMajor: true,
         separateMinorPatch: false,
-        groupName: "flux - veritable-prod",
+        groupName: null,
         automerge: false,
         addLabels: ["production"],
       },
