@@ -67,7 +67,7 @@ module.exports = (config = {}) => {
         separateMajorMinor: true,
         separateMultipleMajor: true,
         separateMinorPatch: false,
-        groupName: "flux - veritable-prod",
+        groupName: null,
         automerge: false,
         addLabels: ["production"],
       },
