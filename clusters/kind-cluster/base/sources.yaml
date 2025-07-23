@@ -7,6 +7,5 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
-    semver: ^v1.0.0
+    branch: bug/triage_configmap_order
   url: https://github.com/digicatapult/monitoring-flux-infra.git
