@@ -3,11 +3,19 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - source.yaml
+  - alloy
+  - kube-prometheus-stack
+  - loki
   - nginx
 configMapGenerator:
   - name: monitoring-values
     files:
       - values-nginx.yaml=nginx/values.yaml
+  - name: project-values
+    files:
+      - alloy-project-values.yaml=alloy/values.yaml
+      - kube-prometheus-stack-project-values.yaml=kube-prometheus-stack/values.yaml
+      - loki-project-values.yaml=loki/values.yaml
 configurations:
   - kustomize-config.yaml
 generatorOptions:
