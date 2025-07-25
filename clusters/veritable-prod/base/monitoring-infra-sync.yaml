@@ -5,8 +5,16 @@ metadata:
   name: monitoring-infra-sync
   namespace: monitoring
 spec:
+  dependsOn:
+    - name: project-sync
+      namespace: monitoring
   interval: 10m0s
   path: ./applications
+  postBuild:
+    substitute:
+      ALLOY_VERSION: "1.2.0"
+      KUBE_PROMETHEUS_STACK_VERSION: "71.2.0"
+      LOKI_VERSION: "6.33.0"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -19,6 +27,9 @@ metadata:
   name: env-sync
   namespace: monitoring
 spec:
+  dependsOn:
+    - name: project-sync
+      namespace: monitoring
   interval: 10m0s
   path: ./clusters/azure/production
   prune: true
@@ -26,7 +37,17 @@ spec:
     kind: GitRepository
     name: monitoring-flux-infra
     namespace: flux-system
-  postBuild:
-    substitute:
-      MONITORING_STACK_HOSTNAME: "monitoring.vrtbl.com"
-      MONITORING_STACK_URL: "https://monitoring.vrtbl.com"
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: project-sync
+  namespace: monitoring
+spec:
+  interval: 10m0s
+  path: ./clusters/veritable-prod/monitoring
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
