@@ -2,7 +2,7 @@
 # Bitnami Legacy images
 global:
   security:
-    allowInsecureImages: false
+    allowInsecureImages: true
 image:
   repository: bitnamilegacy/keycloak
 keycloakConfigCli:
