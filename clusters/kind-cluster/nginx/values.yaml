@@ -2,6 +2,9 @@
 # Bitnami Legacy image
 image:
   repository: bitnamilegacy/nginx-ingress-controller
+defaultBackend:
+  image:
+    repository: bitnamilegacy/nginx
 watchIngressWithoutClass: true
 resourcesPreset: micro
 ingressClassResource:

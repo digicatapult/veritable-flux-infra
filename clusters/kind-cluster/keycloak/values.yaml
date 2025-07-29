@@ -1,13 +1,27 @@
 # https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
-# Bitnami Legacy image
+# Bitnami Legacy images
 image:
   repository: bitnamilegacy/keycloak
+keycloakConfigCli:
+  enabled: false
+  image:
+    repository: bitnamilegacy/keycloak-config-cli
 httpRelativePath: /auth2/
 proxyHeaders: xforwarded
 ingress:
   enabled: true
   hostname: localhost
 postgresql:
+  image:
+    repository: bitnamilegacy/postgresql
+  volumePermissions:
+    enabled: false
+    image:
+      repository: bitnamilegacy/os-shell
+  metrics:
+    enabled: false
+    image:
+      repository: bitnamilegacy/postgres-exporter
   auth:
     password: postgres
 extraEnvVars:
