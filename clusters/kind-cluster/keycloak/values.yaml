@@ -11,6 +11,8 @@ proxyHeaders: xforwarded
 ingress:
   enabled: true
   hostname: localhost
+# https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
+# Bitnami Legacy images
 postgresql:
   image:
     repository: bitnamilegacy/postgresql
