@@ -1,5 +1,8 @@
 # https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
 # Bitnami Legacy images
+global:
+  security:
+    allowInsecureImages: false
 image:
   repository: bitnamilegacy/keycloak
 keycloakConfigCli:
