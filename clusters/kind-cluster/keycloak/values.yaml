@@ -1,3 +1,7 @@
+# https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
+# Bitnami Legacy image
+image:
+  repository: bitnamilegacy/keycloak
 httpRelativePath: /auth2/
 proxyHeaders: xforwarded
 ingress:
