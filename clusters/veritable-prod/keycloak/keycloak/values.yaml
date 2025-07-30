@@ -37,6 +37,9 @@ metrics:
         sourceLabels: [namespace]
         targetLabel: kubernetes_namespace
 postgresql:
+  global:
+    security:
+      allowInsecureImages: true
   image:
     repository: bitnamilegacy/postgresql
   volumePermissions:
