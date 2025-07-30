@@ -8,5 +8,5 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-    semver: ^v3.0.0
+    semver: ^v4.0.0
   url: https://github.com/digicatapult/monitoring-flux-infra.git
