@@ -6,7 +6,6 @@ global:
 image:
   repository: bitnamilegacy/keycloak
 keycloakConfigCli:
-  enabled: false
   image:
     repository: bitnamilegacy/keycloak-config-cli
 httpRelativePath: /auth2/
@@ -19,6 +18,12 @@ ingress:
 postgresql:
   image:
     repository: bitnamilegacy/postgresql
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
+  metrics:
+    image:
+      repository: bitnamilegacy/postgres-exporter
   auth:
     password: postgres
 extraEnvVars:
