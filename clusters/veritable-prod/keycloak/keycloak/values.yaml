@@ -1,3 +1,13 @@
+# https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
+# Bitnami Legacy images
+global:
+  security:
+    allowInsecureImages: true
+image:
+  repository: bitnamilegacy/keycloak
+keycloakConfigCli:
+  image:
+    repository: bitnamilegacy/keycloak-config-cli
 production: true
 proxy: edge
 ingress:
@@ -27,12 +37,22 @@ metrics:
         sourceLabels: [namespace]
         targetLabel: kubernetes_namespace
 postgresql:
+  global:
+    security:
+      allowInsecureImages: true
+  image:
+    repository: bitnamilegacy/postgresql
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
   primary:
     persistence:
       storageClass: managed-csi-premium
       size: 5Gi
   metrics:
-  enabled: true
+    enabled: true
+    image:
+      repository: bitnamilegacy/postgres-exporter
   serviceMonitor:
     enabled: true
     namespace: keycloak

@@ -1,3 +1,20 @@
+# https://github.com/bitnami/charts/blob/main/bitnami/nginx-ingress-controller/values.yaml
+# Bitnami Legacy image
+global:
+  security:
+    allowInsecureImages: true
+controller:
+  image:
+    repository: bitnamilegacy/cert-manager
+  acmesolver:
+    image:
+      repository: bitnamilegacy/acmesolver
+webhook:
+  image:
+    repository: bitnamilegacy/cert-manager-webhook
+cainjector:
+  image:
+    repository: bitnamilegacy/cainjector
 installCRDs: true
 metrics:
   enabled: true

@@ -1,3 +1,13 @@
+# https://github.com/bitnami/charts/blob/main/bitnami/nginx-ingress-controller/values.yaml
+# Bitnami Legacy image
+global:
+  security:
+    allowInsecureImages: true
+image:
+  repository: bitnamilegacy/nginx-ingress-controller
+defaultBackend:
+  image:
+    repository: bitnamilegacy/nginx
 watchIngressWithoutClass: true
 scope:
   enabled: true
