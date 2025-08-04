@@ -3,9 +3,9 @@ controller:
   name: nginx-ingress-controller
   image:
     repository: nginx/nginx-ingress
-  kind: deployment
+  kind: daemonset
   ingressClass:
-    setAsDefaultIngress: true
+    name: ""
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
   service:
@@ -24,6 +24,11 @@ controller:
     http: 80
     https: 443
   logLevel: debug
+rbac:
+  create: false
+  clusterrole:
+    create: true
 prometheus:
+  create: false
   serviceMonitor:
     create: true
