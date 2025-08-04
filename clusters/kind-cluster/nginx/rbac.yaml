@@ -17,3 +17,24 @@ roleRef:
   kind: ClusterRole
   name: nginx-ingress-operator-nginx-ingress-admin
   apiGroup: rbac.authorization.k8s.io
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - endpoints
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+      - extensions
+    resources:
+      - ingressclasses
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch

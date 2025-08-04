@@ -1,5 +1,6 @@
 # https://github.com/nginx/nginx-ingress-helm-operator/blob/main/helm-charts/nginx-ingress/values.yaml
 controller:
+  name: flux
   image:
     repository: nginx/nginx-ingress
   hostNetwork: true
