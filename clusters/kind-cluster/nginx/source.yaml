@@ -20,9 +20,8 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: nginx-oci
+  name: nginx-helm
   namespace: kube-system
 spec:
-  type: "oci"
   interval: 10m
-  url: oci://ghcr.io/nginx/charts/nginx-ingress
+  url: https://helm.nginx.com/stable
