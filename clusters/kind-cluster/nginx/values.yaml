@@ -20,6 +20,8 @@ controller:
     http: 80
     https: 443
   logLevel: debug
+  serviceAccount:
+    name: nginx-ingress-independent
 rbac:
   create: false
   clusterrole:
