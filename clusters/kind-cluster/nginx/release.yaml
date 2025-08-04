@@ -14,14 +14,14 @@ spec:
   releaseName: nginx-ingress-controller
   chart:
     spec:
-      chart: nginx-ingress-controller
+      chart: nginx-ingress
       sourceRef:
         kind: HelmRepository
-        name: bitnami-oci
-      version: "11.6.12"
+        name: nginx-oci
+      version: "5.1.0"
   interval: 10m0s
   # Default values
-  # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
+  # https://github.com/nginx/nginx-ingress-helm-operator/blob/main/helm-charts/nginx-ingress/values.yaml
   valuesFrom:
     - kind: ConfigMap
       name: nginx-values

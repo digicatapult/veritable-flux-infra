@@ -1,36 +1,29 @@
-# https://github.com/bitnami/charts/blob/main/bitnami/nginx-ingress-controller/values.yaml
-# Bitnami Legacy image
-global:
-  security:
-    allowInsecureImages: true
-image:
-  repository: bitnamilegacy/nginx-ingress-controller
-defaultBackend:
+# https://github.com/nginx/nginx-ingress-helm-operator/blob/main/helm-charts/nginx-ingress/values.yaml
+controller:
+  name: nginx-ingress-controller
   image:
-    repository: bitnamilegacy/nginx
-watchIngressWithoutClass: true
-resourcesPreset: micro
-ingressClassResource:
-  default: true
-hostNetwork: true
-dnsPolicy: ClusterFirstWithHostNet
-service:
-  type: NodePort
-nodeSelector:
-  ingress-ready: "true"
-  kubernetes.io/os: linux
-tolerations:
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/master
-    operator: Equal
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/control-plane
-    operator: Equal
-containerPorts:
-  http: 80
-  https: 443
-metrics:
-  enabled: true
+    repository: nginx/nginx-ingress
+  kind: deployment
+  ingressClass:
+    setAsDefaultIngress: true
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  service:
+    type: NodePort
+  nodeSelector:
+    ingress-ready: "true"
+    kubernetes.io/os: linux
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Equal
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Equal
+  containerPort:
+    http: 80
+    https: 443
+  logLevel: debug
+prometheus:
   serviceMonitor:
-    enabled: true
-    namespace: monitoring
+    create: true
