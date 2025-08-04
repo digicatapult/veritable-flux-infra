@@ -1,10 +1,9 @@
 # https://github.com/nginx/nginx-ingress-helm-operator/blob/main/helm-charts/nginx-ingress/values.yaml
 controller:
-  name: nginx-ingress-controller
   image:
     repository: nginx/nginx-ingress
   ingressClass:
-    name: nginx
+    name: ""
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
   service:
