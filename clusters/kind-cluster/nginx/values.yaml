@@ -3,7 +3,6 @@ controller:
   name: nginx-ingress-controller
   image:
     repository: nginx/nginx-ingress
-  kind: daemonset
   ingressClass:
     name: nginx
   hostNetwork: true
