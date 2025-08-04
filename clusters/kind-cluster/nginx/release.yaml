@@ -18,7 +18,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: nginx-helm
-      version: "5.1.0"
+      version: "2.2.1"
   interval: 10m0s
   # Default values
   # https://github.com/nginx/nginx-ingress-helm-operator/blob/main/helm-charts/nginx-ingress/values.yaml
