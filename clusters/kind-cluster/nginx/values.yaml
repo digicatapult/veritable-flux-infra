@@ -2,8 +2,6 @@
 controller:
   image:
     repository: nginx/nginx-ingress
-  ingressClass:
-    name: ""
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
   service:
