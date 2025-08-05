@@ -46,7 +46,7 @@ postgresql:
 ingress:
   hostname: localhost
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    kubernetes.io/ingress.class: nginx
   ingressClassName: nginx
   service:
     type: ClusterIP
