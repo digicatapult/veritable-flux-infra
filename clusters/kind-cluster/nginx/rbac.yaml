@@ -21,19 +21,56 @@ rules:
   - apiGroups:
       - ""
     resources:
+      - events
+    verbs:
+      - create
+      - patch
+  - apiGroups:
+      - ""
+    resources:
       - services
+    verbs:
+      - get
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
       - endpoints
+      - events
+      - nodes
+      - pods
       - secrets
+      - services
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingressclasses
+      - ingresses
     verbs:
       - get
       - list
       - watch
   - apiGroups:
       - networking.k8s.io
-      - extensions
     resources:
-      - ingressclasses
       - ingresses
+    verbs:
+      - update
+  - apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
     verbs:
       - get
       - list
