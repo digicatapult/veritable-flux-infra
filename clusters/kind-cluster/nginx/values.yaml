@@ -20,7 +20,7 @@ controller:
   containerPort:
     http: 80
     https: 443
-  logLevel: debug
+  logLevel: trace
   serviceAccount:
     name: nginx-ingress-independent
 rbac:
