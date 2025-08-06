@@ -1,0 +1,8 @@
+crds:
+  keep: true
+  enabled: true
+prometheus:
+  serviceMonitor:
+    enabled: true
+    namespace: cert-manager
+    targetPort: http
