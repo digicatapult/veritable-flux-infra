@@ -1,0 +1,9 @@
+# https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
+crds:
+  keep: true
+  enabled: true
+prometheus:
+  servicemonitor:
+    enabled: true
+    namespace: cert-manager
+    targetPort: http
