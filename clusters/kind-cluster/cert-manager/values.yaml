@@ -2,7 +2,7 @@ crds:
   keep: true
   enabled: true
 prometheus:
-  serviceMonitor:
+  servicemonitor:
     enabled: true
     namespace: cert-manager
     targetPort: http
