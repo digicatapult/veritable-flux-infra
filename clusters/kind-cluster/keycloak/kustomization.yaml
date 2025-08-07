@@ -5,6 +5,8 @@ resources:
   - release.yaml
   - source.yaml
   - realms.yaml
+  - cluster/release.yaml
+  - cluster/database.yaml
 configMapGenerator:
   - name: keycloak-values
     files:
