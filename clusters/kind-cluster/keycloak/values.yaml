@@ -12,7 +12,7 @@ database:
   database: keycloak
   username: keycloak
   password: keycloak
-extraEnv:
+extraEnv: |
   - name: KC_HOSTNAME_ADMIN
     value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME
@@ -21,12 +21,14 @@ extraEnv:
     value: "true"
   - name: KC_LOG_LEVEL
     value: DEBUG
-args: "--import-realm"
-extraVolumes:
+args:
+  - "--import-realm"
+  - "--verbose"
+extraVolumes: |
   - name: realm-volume
     configMap:
       name: keycloak-realms
       namespace: keycloak
-extraVolumeMounts:
+extraVolumeMounts: |
   - mountPath: /opt/bitnami/keycloak/data/import
     name: realm-volume
