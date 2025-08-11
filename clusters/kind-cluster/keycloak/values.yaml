@@ -7,7 +7,7 @@ proxy:
 ingress:
   enabled: true
 database:
-  vendor: postgresql
+  vendor: postgres
   hostname: localhost
   port: 5432
   database: keycloak
