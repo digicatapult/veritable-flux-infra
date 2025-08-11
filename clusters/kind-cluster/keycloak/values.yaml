@@ -23,6 +23,7 @@ extraEnv: |
   - name: KC_LOG_LEVEL
     value: DEBUG
 args:
+  - "start-dev"
   - "--import-realm"
   - "--verbose"
 extraVolumes: |
