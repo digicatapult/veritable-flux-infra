@@ -1,3 +1,4 @@
+nameOverride: "keycloak"
 http:
   relativePath: /auth2/
 proxy:
