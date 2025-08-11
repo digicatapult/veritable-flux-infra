@@ -8,7 +8,7 @@ spec:
   name: bitnami_keycloak
   owner: bn_keycloak
   cluster:
-    name: postgresql
+    name: postgresql-cluster
   databaseReclaimPolicy: delete
 ---
 apiVersion: postgresql.cnpg.io/v1
@@ -20,5 +20,5 @@ spec:
   name: keycloak
   owner: keycloak
   cluster:
-    name: postgresql
+    name: postgresql-cluster
   databaseReclaimPolicy: delete
