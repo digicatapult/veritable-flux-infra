@@ -14,6 +14,10 @@ database:
   username: keycloak
   password: keycloak
 extraEnv: |
+  - name: KEYCLOAK_ADMIN
+    value: admin
+  - name: KEYCLOAK_ADMIN_PASSWORD
+    value: admin
   - name: KC_HOSTNAME_ADMIN
     value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME
@@ -22,6 +26,9 @@ extraEnv: |
     value: "true"
   - name: KC_LOG_LEVEL
     value: DEBUG
+  - name: JAVA_OPTS_APPEND
+    value: >-
+      -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
 args:
   - "start-dev"
   - "--import-realm"
