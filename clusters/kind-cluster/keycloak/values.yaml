@@ -8,7 +8,7 @@ ingress:
   enabled: true
 database:
   vendor: postgres
-  hostname: localhost
+  hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
   port: 5432
   database: keycloak
   username: keycloak
