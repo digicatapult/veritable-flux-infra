@@ -75,7 +75,7 @@ data:
   password: a2V5Y2xvYWs=
 kind: Secret
 metadata:
-  name: postgresql-keycloak-secret
+  name: postgresql-role-secret
   namespace: keycloak
 type: kubernetes.io/basic-auth
 ---
