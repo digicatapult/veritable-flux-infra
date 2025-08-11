@@ -4,9 +4,8 @@ namespace: keycloak
 resources:
   - database.yaml
   - release.yaml
-  - source.yaml
 configMapGenerator:
-  - name: database-values
+  - name: cluster-values
     files:
       - values.yaml=values.yaml
 configurations:
