@@ -10,7 +10,7 @@ ingress:
   rules:
     - host: localhost
       paths:
-        - path: '{{ tpl .Values.http.relativePath }}'
+        - path: '{{ tpl .Values.http.relativePath $ | trimSuffix "/" }}/'
           pathType: ImplementationSpecific
 database:
   vendor: postgres
