@@ -36,5 +36,5 @@ extraVolumes: |
       name: keycloak-realms
       namespace: keycloak
 extraVolumeMounts: |
-  - mountPath: /opt/bitnami/keycloak/data/import
+  - mountPath: /opt/keycloak/data/import
     name: realm-volume
