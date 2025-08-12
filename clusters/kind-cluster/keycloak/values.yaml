@@ -6,6 +6,12 @@ proxy:
   mode: xforwarded
 ingress:
   enabled: true
+  servicePort: http
+  rules:
+    - host: localhost
+      paths:
+        - path: '{{ tpl .Values.http.relativePath }}'
+          pathType: ImplementationSpecific
 database:
   vendor: postgres
   hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
