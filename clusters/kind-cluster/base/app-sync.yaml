@@ -70,11 +70,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: keycloak-sync
+  name: cloudnative-pg-sync
   namespace: keycloak
 spec:
   interval: 1m
-  path: ./clusters/kind-cluster/keycloak
+  path: ./clusters/kind-cluster/keycloak/cloudnative-pg
   prune: true
   sourceRef:
     kind: GitRepository
@@ -87,6 +87,9 @@ metadata:
   name: cluster-sync
   namespace: keycloak
 spec:
+  dependsOn:
+    - name: cloudnative-pg-sync
+      namespace: keycloak
   interval: 1m
   path: ./clusters/kind-cluster/keycloak/cluster
   prune: true
@@ -98,11 +101,14 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cloudnative-pg-sync
+  name: keycloak-sync
   namespace: keycloak
 spec:
+  dependsOn:
+    - name: cluster-sync
+      namespace: keycloak
   interval: 1m
-  path: ./clusters/kind-cluster/keycloak/cloudnative-pg
+  path: ./clusters/kind-cluster/keycloak
   prune: true
   sourceRef:
     kind: GitRepository
