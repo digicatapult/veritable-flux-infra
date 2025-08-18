@@ -7,6 +7,10 @@ controller:
     type: NodePort
   nodeSelector:
     kubernetes.io/os: linux
+  ingressClassResource:
+    name: ingress-nginx
+    electionID: ingress-nginx-leader
+    controllerValue: k8s.io/ingress-nginx
   tolerations:
     - effect: NoSchedule
       key: node-role.kubernetes.io/master
