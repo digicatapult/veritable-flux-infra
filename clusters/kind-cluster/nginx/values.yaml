@@ -22,3 +22,5 @@ controller:
     serviceMonitor:
       enabled: true
       namespace: monitoring
+  admissionWebhooks:
+    enabled: false
