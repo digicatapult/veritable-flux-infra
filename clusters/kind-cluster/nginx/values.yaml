@@ -8,8 +8,8 @@ controller:
   nodeSelector:
     kubernetes.io/os: linux
   ingressClassResource:
-    name: ingress-nginx
-    electionID: ingress-nginx-leader
+    name: nginx
+    electionID: nginx-leader
     controllerValue: k8s.io/ingress-nginx
   tolerations:
     - effect: NoSchedule
