@@ -1,13 +1,24 @@
 # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
 controller:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  # allowSnippetAnnotations: true
+  # enableAnnotationValidations: true
   watchIngressWithoutClass: true
+  extraArgs:
+    publish-status-address: localhost
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
   service:
     type: NodePort
+  publishService:
+    enabled: false
   nodeSelector:
     kubernetes.io/os: linux
   ingressClassResource:
+    # default: true
     name: nginx
     electionID: nginx-leader
     controllerValue: k8s.io/ingress-nginx
@@ -28,3 +39,4 @@ controller:
       namespace: monitoring
   admissionWebhooks:
     enabled: false
+  terminationGracePeriodSeconds: 0
