@@ -16,3 +16,12 @@ spec:
   type: "oci"
   interval: 10m
   url: oci://registry-1.docker.io/bitnamicharts
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: nginx-stable
+  namespace: kube-system
+spec:
+  interval: 10m
+  url: https://helm.nginx.com/stable

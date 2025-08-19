@@ -108,6 +108,16 @@ assert_flux_env() {
     fi
 }
 
+install_nic_operator() {
+  assert_command "curl"
+  latest_release=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" \
+    -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/nginx/nginx-ingress-helm-operator/releases/latest)
+  tag=$(echo "$latest_release" | grep tag_name | grep -Eio "v.+\w{1,}" )
+  git clone https://github.com/nginx/nginx-ingress-helm-operator/ /tmp/nginx-ingress-helm-operator --branch "$tag" 2>/dev/null
+  version=$(echo "$tag" | tr -d 'v')
+  (cd /tmp/nginx-ingress-helm-operator && make deploy IMG=nginx/nginx-ingress-operator:$version)
+}
+
 install_flux() {
     local context=$1
     printf "Installing Flux...\n"
@@ -155,6 +165,7 @@ assert_command kubectl
 assert_command flux
 assert_env $CONTEXT_NAME
 assert_flux_env $CONTEXT_NAME
+install_nic_operator
 install_flux $CONTEXT_NAME
 setup_flux_git_source $CONTEXT_NAME $INFRA_GIT $INFRA_BRANCH
 setup_flux_kustomization $CONTEXT_NAME $INFRA_BASE_PATH
