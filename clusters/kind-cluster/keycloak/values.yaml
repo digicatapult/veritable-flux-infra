@@ -18,6 +18,7 @@ ingress:
 postgresql:
   image:
     repository: bitnamilegacy/postgresql
+    tag: 17.5.0-debian-12-r9
   volumePermissions:
     image:
       repository: bitnamilegacy/os-shell
