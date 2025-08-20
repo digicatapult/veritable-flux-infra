@@ -37,7 +37,9 @@ module.exports = (config = {}) => {
         matchManagers: ["flux"],
         matchFileNames: [
           "clusters/kind-cluster/**/*.yaml",
-          "clusters/kind-cluster/**/*.yml"
+          "clusters/kind-cluster/**/*.yml",
+          "clusters/veritable-prod/**/!*.yaml",
+          "clusters/veritable-prod/**/!*.yml",
         ],
         postUpgradeTasks: {
           fileFilters: [
@@ -56,7 +58,9 @@ module.exports = (config = {}) => {
         matchManagers: ["flux"],
         matchFileNames: [
           "clusters/veritable-prod/**/*.yaml",
-          "clusters/veritable-prod/**/*.yml"
+          "clusters/veritable-prod/**/*.yml",
+          "clusters/kind-cluster/**/!*.yaml",
+          "clusters/kind-cluster/**/!*.yml",
         ],
         postUpgradeTasks: {
           fileFilters: [
