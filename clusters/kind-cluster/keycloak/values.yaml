@@ -1,6 +1,6 @@
 nameOverride: "keycloak"
 http:
-  relativePath: /auth2
+  relativePath: /auth2/
 proxy:
   enabled: true
   mode: xforwarded
