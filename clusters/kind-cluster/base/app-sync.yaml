@@ -87,9 +87,6 @@ metadata:
   name: cluster-sync
   namespace: keycloak
 spec:
-  dependsOn:
-    - name: cloudnative-pg-sync
-      namespace: keycloak
   interval: 1m
   path: ./clusters/kind-cluster/keycloak/cluster
   prune: true
@@ -104,9 +101,6 @@ metadata:
   name: keycloak-sync
   namespace: keycloak
 spec:
-  dependsOn:
-    - name: cluster-sync
-      namespace: keycloak
   interval: 1m
   path: ./clusters/kind-cluster/keycloak
   prune: true
