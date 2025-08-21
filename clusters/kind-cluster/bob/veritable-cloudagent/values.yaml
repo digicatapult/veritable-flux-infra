@@ -13,14 +13,17 @@ postgresql:
       allowInsecureImages: true
   image:
     repository: bitnamilegacy/postgresql
+    tag: 17.5.0-debian-12-r9
   volumePermissions:
     image:
       repository: bitnamilegacy/os-shell
+      tag: 12-debian-12-r50
   auth:
     password: postgres
   metrics:
     image:
       repository: bitnamilegacy/postgres-exporter
+      tag: 0.17.1-debian-12-r14
     enabled: true
     serviceMonitor:
       enabled: true
