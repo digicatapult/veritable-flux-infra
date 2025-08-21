@@ -14,6 +14,10 @@ ingress:
   - host: localhost
     paths:
     - pathType: Prefix
+      path: /
+  - host: localhost
+    paths:
+    - pathType: Prefix
       path: /auth2/
 database:
   vendor: postgres
