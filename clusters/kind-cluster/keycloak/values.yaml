@@ -12,15 +12,9 @@ ingress:
   }
   rules:
   - host: localhost
-    http:
-      paths:
-      - pathType: Prefix
-        path: /auth2/
-        backend:
-          service:
-            name: keycloak-http
-            port:
-              number: 8080
+    paths:
+    - pathType: Prefix
+      path: /auth2/
 database:
   vendor: postgres
   hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
