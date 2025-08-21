@@ -18,9 +18,9 @@ database:
   username: keycloak
   password: keycloak
 extraEnv: |
-  - name: KEYCLOAK_ADMIN
+  - name: KC_BOOTSTRAP_ADMIN_USERNAME
     value: admin
-  - name: KEYCLOAK_ADMIN_PASSWORD
+  - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
   - name: KC_HOSTNAME_ADMIN
     value: "http://localhost:3080/auth2/"
