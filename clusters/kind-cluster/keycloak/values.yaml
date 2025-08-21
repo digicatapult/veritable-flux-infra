@@ -34,7 +34,6 @@ extraEnv: |
 args:
   - "start-dev"
   - "--import-realm"
-  - "--http-port=3080"
   - "--hostname-strict=false"
   - "--verbose"
 extraVolumes: |
