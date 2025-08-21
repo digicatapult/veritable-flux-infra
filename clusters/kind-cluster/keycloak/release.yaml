@@ -10,7 +10,7 @@ spec:
   upgrade:
     remediation:
       retries: -1
-  releaseName: keycloakx
+  releaseName: keycloak
   chart:
     spec:
       chart: keycloakx
