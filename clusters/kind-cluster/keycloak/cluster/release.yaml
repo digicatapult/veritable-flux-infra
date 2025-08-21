@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: keycloak
+  name: postgresql
   namespace: keycloak
 spec:
   install:
@@ -10,16 +10,16 @@ spec:
   upgrade:
     remediation:
       retries: -1
-  releaseName: keycloak
+  releaseName: postgresql
   chart:
     spec:
-      chart: keycloakx
+      chart: cluster
       sourceRef:
         kind: HelmRepository
-        name: codecentric
-      version: "7.1.1"
+        name: cloudnative-pg
+      version: "0.3.1"
   interval: 10m0s
   valuesFrom:
     - kind: ConfigMap
-      name: keycloak-values
+      name: cluster-values
       valuesKey: values.yaml
