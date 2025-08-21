@@ -1,4 +1,4 @@
-nameOverride: "keycloak"
+nameOverride: keycloak
 http:
   relativePath: /auth2/
 proxy:
@@ -15,10 +15,6 @@ ingress:
     paths:
     - pathType: Prefix
       path: /
-  - host: localhost
-    paths:
-    - pathType: Prefix
-      path: /auth2/
 database:
   vendor: postgres
   hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
