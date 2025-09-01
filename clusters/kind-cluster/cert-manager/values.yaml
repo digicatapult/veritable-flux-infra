@@ -6,4 +6,9 @@ prometheus:
   servicemonitor:
     enabled: true
     namespace: cert-manager
-    targetPort: http
+    targetPort: 9402
+    endpointAdditionalProperties:
+      relabelings:
+      - action: replace
+        sourceLabels: [namespace]
+        targetLabel: kubernetes_namespace
