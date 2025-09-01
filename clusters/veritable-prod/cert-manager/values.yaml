@@ -12,6 +12,8 @@ prometheus:
       - action: replace
         sourceLabels: [namespace]
         targetLabel: kubernetes_namespace
+strategy:
+  type: RollingUpdate
 podDisruptionBudget:
   enabled: true
   minAvailable: 1
