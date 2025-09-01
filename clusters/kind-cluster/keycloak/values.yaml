@@ -28,6 +28,10 @@ extraEnv: |
     value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME_DEBUG
     value: "true"
+  - name: KC_HOSTNAME_STRICT
+    value: "false"
+  - name: KC_HOSTNAME_STRICT_HTTPS
+    value: "false"
   - name: JAVA_OPTS_APPEND
     value: >-
       -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
