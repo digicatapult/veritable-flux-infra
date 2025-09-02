@@ -8,6 +8,7 @@ ingress:
   enabled: true
   servicePort: http
   annotations: {
+    nginx.ingress.kubernetes.io/ssl-redirect: "false",
     nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
   }
   rules:
