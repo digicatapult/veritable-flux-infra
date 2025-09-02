@@ -8,7 +8,6 @@ idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth2/realms/si
 externalCloudagent:
   host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
-invitationFromCompanyNumber: "07964699"
 demoMode: true
 smtpHost: localhost
 smtpSecure: false
