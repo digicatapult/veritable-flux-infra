@@ -1,0 +1,14 @@
+# https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
+crds:
+  keep: true
+  enabled: true
+prometheus:
+  servicemonitor:
+    enabled: true
+    namespace: cert-manager
+    targetPort: 9402
+    endpointAdditionalProperties:
+      relabelings:
+      - action: replace
+        sourceLabels: [namespace]
+        targetLabel: kubernetes_namespace
