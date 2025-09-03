@@ -50,7 +50,6 @@ ingress:
   hostname: localhost
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
   ingressClassName: nginx
   service:
     type: ClusterIP
