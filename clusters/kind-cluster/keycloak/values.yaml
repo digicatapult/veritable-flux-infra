@@ -44,7 +44,6 @@ extraEnv: |
 args:
   - "start-dev"
   - "--import-realm"
-  - "--hostname-strict=false"
   - "--verbose"
 extraVolumes: |
   - name: realm-volume
