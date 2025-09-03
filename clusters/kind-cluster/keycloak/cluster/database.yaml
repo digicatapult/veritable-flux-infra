@@ -2,18 +2,6 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
-  name: postgresql
-  namespace: keycloak
-spec:
-  name: bitnami_keycloak
-  owner: bn_keycloak
-  cluster:
-    name: postgresql-cluster
-  databaseReclaimPolicy: delete
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
   name: keycloak
   namespace: keycloak
 spec:
@@ -52,22 +40,6 @@ spec:
         - pg_signal_backend
       passwordSecret:
         name: postgresql-role-secret
-    - name: bn_keycloak
-      ensure: present
-      login: true
-      superuser: false
-      createdb: true
-      createrole: true
-      inherit: false
-      replication: false
-      bypassrls: false
-      connectionLimit: 4
-      validUntil: "2050-01-01T00:00:00Z"
-      inRoles:
-        - pg_monitor
-        - pg_signal_backend
-      passwordSecret:
-        name: postgresql-bitnami-keycloak-secret
 ---
 apiVersion: v1
 data:
@@ -76,15 +48,5 @@ data:
 kind: Secret
 metadata:
   name: postgresql-role-secret
-  namespace: keycloak
-type: kubernetes.io/basic-auth
----
-apiVersion: v1
-data:
-  username: Ym5fa2V5Y2xvYWs=
-  password: a2V5Y2xvYWs=
-kind: Secret
-metadata:
-  name: postgresql-bitnami-keycloak-secret
   namespace: keycloak
 type: kubernetes.io/basic-auth

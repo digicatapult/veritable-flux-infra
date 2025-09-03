@@ -38,14 +38,6 @@ extraEnv: |
     value: "false"
   - name: KC_HOSTNAME_STRICT_HTTPS
     value: "false"
-  - name: KC_HTTP_RELATIVE_PATH
-    value: "/auth2/"
-  - name: KEYCLOAK_HTTP_RELATIVE_PATH
-    value: "/auth2/"
-  - name: KEYCLOAK_LOG_LEVEL
-    value: DEBUG
-  - name: KEYCLOAK_LOG_OUTPUT
-    value: default
   - name: JAVA_OPTS_APPEND
     value: >-
       -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
