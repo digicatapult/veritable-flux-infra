@@ -1,27 +1,19 @@
-# https://github.com/bitnami/charts/blob/main/bitnami/nginx-ingress-controller/values.yaml
-# Bitnami Legacy image
-global:
-  security:
-    allowInsecureImages: true
-controller:
-  image:
-    repository: bitnamilegacy/cert-manager
-  acmesolver:
-    image:
-      repository: bitnamilegacy/acmesolver
-webhook:
-  image:
-    repository: bitnamilegacy/cert-manager-webhook
-cainjector:
-  image:
-    repository: bitnamilegacy/cainjector
-installCRDs: true
-metrics:
+# https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
+crds:
+  keep: true
   enabled: true
-  serviceMonitor:
+prometheus:
+  servicemonitor:
     enabled: true
     namespace: cert-manager
-    relabelings:
+    targetPort: 9402
+    endpointAdditionalProperties:
+      relabelings:
       - action: replace
         sourceLabels: [namespace]
         targetLabel: kubernetes_namespace
+strategy:
+  type: RollingUpdate
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
