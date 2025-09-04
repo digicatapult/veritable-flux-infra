@@ -9,6 +9,7 @@ data:
       "enabled": true,
       "realm": "simple",
       "registrationAllowed": true,
+      "sslRequired": false,
       "clients": [
           {
             "clientId": "alice",
