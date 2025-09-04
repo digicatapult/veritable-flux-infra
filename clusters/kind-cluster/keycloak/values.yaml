@@ -44,7 +44,7 @@ extraEnv: |
 args:
   - "start-dev"
   - "--import-realm"
-  - "--ssl-required=none"
+  - "--ssl-required=false"
   - "--verbose"
 extraVolumes: |
   - name: realm-volume
