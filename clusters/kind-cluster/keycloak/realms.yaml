@@ -9,7 +9,7 @@ data:
       "enabled": true,
       "realm": "simple",
       "registrationAllowed": true,
-      "sslRequired": none,
+      "sslRequired": "false",
       "clients": [
           {
             "clientId": "alice",
