@@ -16,3 +16,21 @@ spec:
   type: "oci"
   interval: 10m
   url: oci://registry-1.docker.io/bitnamicharts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: codecentric
+  namespace: keycloak
+spec:
+  interval: 10m
+  url: https://codecentric.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: cloudnative-pg
+  namespace: keycloak
+spec:
+  interval: 10m
+  url: https://cloudnative-pg.github.io/charts

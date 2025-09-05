@@ -4,7 +4,7 @@ apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice"
 idpPublicURLPrefix: http://localhost:3080/auth2/realms/simple/protocol/openid-connect
-idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/auth2/realms/simple/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak-http.keycloak.svc.cluster.local/auth2/realms/simple/protocol/openid-connect
 externalCloudagent:
   host: "alice-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
@@ -50,6 +50,7 @@ ingress:
   hostname: localhost
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
   ingressClassName: nginx
   service:
     type: ClusterIP

@@ -1,50 +1,56 @@
-# https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
-# Bitnami Legacy images
-global:
-  security:
-    allowInsecureImages: true
-image:
-  repository: bitnamilegacy/keycloak
-keycloakConfigCli:
-  image:
-    repository: bitnamilegacy/keycloak-config-cli
-httpRelativePath: /auth2/
-proxyHeaders: xforwarded
+nameOverride: "keycloak"
+http:
+  relativePath: /auth2/
+proxy:
+  enabled: true
+  mode: xforwarded
 ingress:
   enabled: true
-  hostname: localhost
-# https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
-# Bitnami Legacy images
-postgresql:
-  image:
-    repository: bitnamilegacy/postgresql
-    tag: 17.5.0-debian-12-r9
-  volumePermissions:
-    image:
-      repository: bitnamilegacy/os-shell
-      tag: 12-debian-12-r50
-  metrics:
-    image:
-      repository: bitnamilegacy/postgres-exporter
-      tag: 0.17.1-debian-12-r14
-  auth:
-    password: postgres
-extraEnvVars:
+  servicePort: http
+  annotations: {
+    nginx.ingress.kubernetes.io/ssl-redirect: "false",
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
+  }
+  rules:
+    - host: "localhost"
+      paths:
+        - path: "/auth2/"
+          pathType: Prefix
+database:
+  vendor: postgres
+  hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
+  port: 5432
+  database: keycloak
+  username: keycloak
+  password: keycloak
+extraEnv: |
+  - name: KC_BOOTSTRAP_ADMIN_USERNAME
+    value: admin
+  - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+    value: admin
   - name: KC_HOSTNAME_ADMIN
     value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME
     value: "http://localhost:3080/auth2/"
   - name: KC_HOSTNAME_DEBUG
     value: "true"
-extraStartupArgs: "--import-realm"
-extraVolumes:
+  - name: KC_HOSTNAME_STRICT
+    value: "false"
+  - name: KC_HOSTNAME_STRICT_HTTPS
+    value: "false"
+  - name: JAVA_OPTS_APPEND
+    value: >-
+      -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
+args:
+  - "start-dev"
+  - "--import-realm"
+  - "--ssl-required=false"
+  - "--verbose"
+extraVolumes: |
   - name: realm-volume
     configMap:
       name: keycloak-realms
       namespace: keycloak
-extraVolumeMounts:
-  - mountPath: /opt/bitnami/keycloak/data/import
+extraVolumeMounts: |
+  - mountPath: /opt/keycloak/data/import
     name: realm-volume
-resourcesPreset: none
-logging:
-  level: DEBUG
