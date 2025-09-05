@@ -30,4 +30,4 @@ ipfs:
     size: 5Gi
     storageClass: managed-csi-premium
   initConfig:
-    bootNodeAddress: "/dns4/cloudagent-veritable-cloudagent-0-swarm.alice.svc.cluster.local/tcp/4001/p2p/12D3KooWEsHEGsiMuH4qhqYg5VpbZhRz5yaRZr2Uaz4Cywid9BMo"
+    bootNodeAddress: "/dns4/cloudagent-veritable-cloudagent-0-swarm.alice.svc.cluster.local/tcp/4001/p2p/12D3KooWJsqkYm6JcYCnZxijaN9L1xMLYgD9JbZfC6Rt42omnUfb"
