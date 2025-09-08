@@ -17,7 +17,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cloudnative-pg
-      version: "0.25.0"
+      version: "0.26.0"
   interval: 10m0s
   valuesFrom:
     - kind: ConfigMap
