@@ -48,12 +48,12 @@ smtpCredentials:
 logLevel: trace
 openCorporatesApiUrl: "https://api.opencorporates.com/v0.4"
 openCorporatesApiKey:
-  enabled: true
+  enabled: false
   existingSecret: opencorporates-api-key
   existingSecretKey: key
 ipidApiUrl: "https://sandbox.ipid.works"
 ipidCustomerId: "digicatapult-uat"
 ipidApiKey:
-  enabled: true
+  enabled: false
   existingSecret: ipid-api-key
   existingSecretKey: key
