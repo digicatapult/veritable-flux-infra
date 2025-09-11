@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: test/renovate/veritable-cloudagent-2.4.37
   url: https://github.com/digicatapult/veritable-flux-infra.git
 
 ---
