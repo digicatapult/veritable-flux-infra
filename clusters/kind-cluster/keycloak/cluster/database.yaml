@@ -24,14 +24,16 @@ spec:
       import:
         type: microservice
         databases:
-          - keycloak
+          - "*"
+        roles:
+          - "*"
         source:
           externalCluster: keycloak-postgresql
   externalClusters:
     - name: keycloak-postgresql
       connectionParameters:
         host: keycloak-postgresql
-        user: bn_keycloak
+        user: postgres
         dbname: bitnami_keycloak
       password:
         name: keycloak-postgresql
