@@ -34,7 +34,7 @@ spec:
         user: postgres
         dbname: bitnami_keycloak
       password:
-        name: keycloak-postgresql
+        name: keycloak-bitnami-creds
         key: pgpass
   managed:
     roles:
