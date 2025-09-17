@@ -19,23 +19,6 @@ spec:
   instances: 1
   storage:
     size: 5Gi
-  bootstrap:
-    initdb:
-      import:
-        type: microservice
-        databases:
-          - bitnami_keycloak
-        source:
-          externalCluster: keycloak-postgresql
-  externalClusters:
-    - name: keycloak-postgresql
-      connectionParameters:
-        host: keycloak-postgresql
-        user: postgres
-        dbname: bitnami_keycloak
-      password:
-        name: keycloak-bitnami-creds
-        key: pgpass
   managed:
     roles:
     - name: app

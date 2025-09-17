@@ -7,3 +7,17 @@ cluster:
   instances: 1
 backups:
   enabled: false
+recovery:
+  import:
+    type: "microservice"
+    databases:
+      - keycloak-postgresql
+    source:
+      host: keycloak-postgresql.keycloak.svc.cluster.local
+      port: 5432
+      username: postgres
+      database: bitnami_keycloak
+      passwordSecret:
+        create: false
+        name: keycloak-bitnami-creds
+        key: password
