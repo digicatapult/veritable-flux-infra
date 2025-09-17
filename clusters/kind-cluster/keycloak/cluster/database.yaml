@@ -24,9 +24,7 @@ spec:
       import:
         type: microservice
         databases:
-          - "*"
-        roles:
-          - "*"
+          - bitnami_keycloak
         source:
           externalCluster: keycloak-postgresql
   externalClusters:
