@@ -13,7 +13,7 @@ recovery:
     databases:
       - keycloak-postgresql
     source:
-      host: keycloak-postgresql.keycloak.svc.cluster.local
+      host: keycloak-postgresql
       port: 5432
       username: postgres
       database: bitnami_keycloak
