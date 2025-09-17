@@ -13,12 +13,14 @@ spec:
   releaseName: keycloak
   chart:
     spec:
-      chart: keycloakx
+      chart: keycloak
       sourceRef:
         kind: HelmRepository
-        name: codecentric
-      version: "7.1.3"
+        name: bitnami-oci
+      version: "24.7.4"
   interval: 10m0s
+  # Default values
+  # https://github.com/bitnami/charts/blob/master/bitnami/keycloak/values.yaml
   valuesFrom:
     - kind: ConfigMap
       name: keycloak-values
