@@ -21,6 +21,14 @@ metadata:
   labels:
     app.kubernetes.io/instance: veritable
     app.kubernetes.io/version: latest
+  name: cloudnative-pg
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
   name: keycloak
 ---
 apiVersion: v1
