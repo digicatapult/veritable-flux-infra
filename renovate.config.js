@@ -57,6 +57,25 @@ module.exports = (config = {}) => {
         automerge: true,
         addLabels: ["automerge", "kind"],
       },
+      {
+        matchManagers: ["flux"],
+        matchFileNames: [
+          "clusters/kind-cluster/**/*.yaml",
+          "clusters/kind-cluster/**/*.yml",
+          "clusters/veritable-prod/**/!*.yaml",
+          "clusters/veritable-prod/**/!*.yml",
+        ],
+        postUpgradeTasks: {
+          fileFilters: [
+            "clusters/kind-cluster/**/*.yaml",
+            "clusters/kind-cluster/**/*.yml"
+          ]
+        },
+        matchUpdateTypes: ["major"],
+        groupName: null,
+        automerge: false,
+        labels: ["dependencies", "flux", "kind"]
+      },
       // Issue: These rules still merge YAML across directories into a single commit
       // TODO: Investigate how to force the separation of Renovate's PRs by directory
       // {
