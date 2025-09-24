@@ -1,47 +1,55 @@
-# https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
-# Bitnami Legacy images
-global:
-  security:
-    allowInsecureImages: true
-image:
-  repository: bitnamilegacy/keycloak
-keycloakConfigCli:
-  image:
-    repository: bitnamilegacy/keycloak-config-cli
-production: true
-proxy: edge
+# https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
+nameOverride: "keycloak"
+proxy:
+  enabled: true
+  mode: forwarded
 ingress:
   enabled: true
   ingressClassName: nginx-keycloak
-  hostname: auth.vrtbl.com
-adminIngress:
-  enabled: true
-  ingressClassName: nginx-keycloak
-  hostname: auth.vrtbl.com
-auth:
-  adminUser: "admin"
-extraEnvVars:
+  rules:
+    - host: auth.vrtbl.com
+      paths:
+        - path: "/"
+          pathType: Prefix
+http:
+  relativePath: "/"
+extraEnv: |
+  - name: KC_BOOTSTRAP_ADMIN_USERNAME
+    value: admin
+  - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-admin-creds
+        key: password
   - name: KC_HOSTNAME_ADMIN_URL
     value: "https://auth.vrtbl.com/"
   - name: KC_HOSTNAME_URL
     value: "https://auth.vrtbl.com/"
   - name: KC_HOSTNAME_DEBUG
     value: "true"
+  - name: JAVA_OPTS_APPEND
+    value: >-
+      -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
+command:
+  - "/opt/keycloak/bin/kc.sh"
+  - "--verbose"
+  - "start"
 metrics:
   enabled: true
-  serviceMonitor:
-    enabled: true
-    namespace: keycloak
-    relabelings:
-      - action: replace
-        sourceLabels: [namespace]
-        targetLabel: kubernetes_namespace
+serviceMonitor:
+  enabled: true
+  namespace: keycloak
+  relabelings:
+    - action: replace
+      sourceLabels: [namespace]
+      targetLabel: kubernetes_namespace
 postgresql:
   enabled: false
-externalDatabase:
-  host: keycloak-cnpg-rw.keycloak.svc.cluster.local
+database:
+  existingSecret: keycloak-cnpg-creds
+  existingSecretKey: password
+  vendor: postgres
+  hostname: keycloak-cnpg-rw.keycloak.svc.cluster.local
   port: 5432
   database: keycloak
   user: keycloak
-  existingSecret: keycloak-cnpg-creds
-  existingSecretPasswordKey: password

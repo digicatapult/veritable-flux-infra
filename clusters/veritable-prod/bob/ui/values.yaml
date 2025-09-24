@@ -4,7 +4,7 @@ apiSwaggerTitle: Bob
 apiSwaggerBgColor: "#ff3131"
 idpClientId: "bob"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/bob/protocol/openid-connect
-idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/bob/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak-http.keycloak.svc.cluster.local/realms/bob/protocol/openid-connect
 externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.bob.svc.cluster.local"
   port: "3000"

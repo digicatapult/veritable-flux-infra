@@ -7,28 +7,21 @@ spec:
   install:
     remediation:
       retries: -1
+  upgrade:
+    remediation:
+      retries: -1
   releaseName: keycloak
   chart:
     spec:
-      version: 21.3.1
-      chart: keycloak
+      chart: keycloakx
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: codecentric
+      version: "7.1.3"
   interval: 10m0s
   # Default values
-  # https://github.com/bitnami/charts/blob/master/bitnami/keycloak/values.yaml
+  # https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
   valuesFrom:
     - kind: ConfigMap
       name: keycloak-values
       valuesKey: keycloak-values.yaml
-    - kind: Secret
-      name: keycloak-postgres-password
-      valuesKey: password
-      targetPath: postgresql.auth.password
-    - kind: Secret
-      name: keycloak-admin-creds
-      valuesKey: password
-      targetPath: auth.adminPassword
-
-
