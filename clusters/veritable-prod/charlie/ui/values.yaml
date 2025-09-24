@@ -4,7 +4,7 @@ apiSwaggerTitle: Charlie
 apiSwaggerBgColor: "#ffbd59"
 idpClientId: "charlie"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/charlie/protocol/openid-connect
-idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/charlie/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak-http.keycloak.svc.cluster.local/realms/charlie/protocol/openid-connect
 externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.charlie.svc.cluster.local"
   port: "3000"

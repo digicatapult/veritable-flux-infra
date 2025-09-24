@@ -4,7 +4,7 @@ apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
 idpClientId: "alice"
 idpPublicURLPrefix: https://auth.vrtbl.com/realms/alice/protocol/openid-connect
-idpInternalURLPrefix: http://keycloak.keycloak.svc.cluster.local/realms/alice/protocol/openid-connect
+idpInternalURLPrefix: http://keycloak-http.keycloak.svc.cluster.local/realms/alice/protocol/openid-connect
 externalCloudagent:
   host: "cloudagent-veritable-cloudagent-admin.alice.svc.cluster.local"
   port: "3000"
