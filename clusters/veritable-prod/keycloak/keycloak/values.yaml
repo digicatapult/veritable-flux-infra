@@ -21,9 +21,9 @@ extraEnv: |
       secretKeyRef:
         name: keycloak-admin-creds
         key: password
-  - name: KC_HOSTNAME_ADMIN_URL
+  - name: KC_HOSTNAME_ADMIN
     value: "https://auth.vrtbl.com/"
-  - name: KC_HOSTNAME_URL
+  - name: KC_HOSTNAME
     value: "https://auth.vrtbl.com/"
   - name: KC_HOSTNAME_DEBUG
     value: "true"
