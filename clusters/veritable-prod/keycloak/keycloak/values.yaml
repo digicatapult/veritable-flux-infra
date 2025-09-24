@@ -37,26 +37,11 @@ metrics:
         sourceLabels: [namespace]
         targetLabel: kubernetes_namespace
 postgresql:
-  global:
-    security:
-      allowInsecureImages: true
-  image:
-    repository: bitnamilegacy/postgresql
-  volumePermissions:
-    image:
-      repository: bitnamilegacy/os-shell
-  primary:
-    persistence:
-      storageClass: managed-csi-premium
-      size: 5Gi
-  metrics:
-    enabled: true
-    image:
-      repository: bitnamilegacy/postgres-exporter
-  serviceMonitor:
-    enabled: true
-    namespace: keycloak
-    relabelings:
-      - action: replace
-        sourceLabels: [namespace]
-        targetLabel: kubernetes_namespace
+  enabled: false
+externalDatabase:
+  host: keycloak-cnpg-rw.keycloak.svc.cluster.local
+  port: 5432
+  database: keycloak
+  user: keycloak
+  existingSecret: keycloak-cnpg-creds
+  existingSecretPasswordKey: password
