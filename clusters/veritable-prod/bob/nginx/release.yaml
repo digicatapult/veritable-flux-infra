@@ -8,17 +8,20 @@ spec:
   install:
     remediation:
       retries: -1
-  releaseName: nginx-ingress-controller
+  upgrade:
+    remediation:
+      retries: -1
+  releaseName: ingress-nginx
   chart:
     spec:
-      version: 11.6.12
-      chart: nginx-ingress-controller
+      chart: ingress-nginx
       sourceRef:
         kind: HelmRepository
-        name: bitnami-oci
-  interval: 10m0s
+        name: ingress-nginx
+      version: "4.13.2"
+  interval: 10m
   # Default values
-  # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
+  # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
   valuesFrom:
     - kind: ConfigMap
       name: bob-values
