@@ -1,42 +1,34 @@
-# https://github.com/bitnami/charts/blob/main/bitnami/nginx-ingress-controller/values.yaml
-# Bitnami Legacy image
-global:
-  security:
-    allowInsecureImages: true
-image:
-  repository: bitnamilegacy/nginx-ingress-controller
-defaultBackend:
-  image:
-    repository: bitnamilegacy/nginx
-watchIngressWithoutClass: true
-scope:
-  enabled: true
-ingressClassResource:
-  name: nginx-bob
-  default: false
-service:
-  type: LoadBalancer
-  annotations: 
-    service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
-    external-dns.alpha.kubernetes.io/hostname: bob.vrtbl.com
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    cert-manager.io/common-name: bob.vrtbl.com
-extraArgs:
-  default-ssl-certificate: "bob/bob-vrtbl-com-prod-tls"
-nodeSelector:
-  kubernetes.io/os: linux
-tolerations:
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/master
-    operator: Equal
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/control-plane
-    operator: Equal
-containerPorts:
-  http: 80
-  https: 443
-metrics:
-  enabled: true
-  serviceMonitor:
+# https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
+controller:
+  watchIngressWithoutClass: true
+  scope:
     enabled: true
-    namespace: bob
+  ingressClassResource:
+    name: nginx-bob
+    default: false
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      external-dns.alpha.kubernetes.io/hostname: bob.vrtbl.com
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/common-name: bob.vrtbl.com
+  extraArgs:
+    default-ssl-certificate: "bob/bob-vrtbl-com-prod-tls"
+  nodeSelector:
+    kubernetes.io/os: linux
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Equal
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Equal
+  containerPort:
+    http: 80
+    https: 443
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: bob
