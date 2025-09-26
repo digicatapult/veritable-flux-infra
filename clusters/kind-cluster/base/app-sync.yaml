@@ -9,6 +9,8 @@ spec:
   path: ./clusters/kind-cluster/alice
   prune: true
   dependsOn:
+    - name: cloudnative-pg-sync
+      namespace: cloudnative-pg
     - name: monitoring-sync
       namespace: monitoring
   sourceRef:
@@ -26,6 +28,8 @@ spec:
   path: ./clusters/kind-cluster/bob
   prune: true
   dependsOn:
+    - name: cloudnative-pg-sync
+      namespace: cloudnative-pg
     - name: monitoring-sync
       namespace: monitoring
   sourceRef:
@@ -43,6 +47,8 @@ spec:
   path: ./clusters/kind-cluster/charlie
   prune: true
   dependsOn:
+    - name: cloudnative-pg-sync
+      namespace: cloudnative-pg
     - name: monitoring-sync
       namespace: monitoring
   sourceRef:
@@ -71,24 +77,10 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cloudnative-pg-sync
-  namespace: keycloak
+  namespace: cloudnative-pg
 spec:
   interval: 1m
-  path: ./clusters/kind-cluster/keycloak/cloudnative-pg
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cluster-sync
-  namespace: keycloak
-spec:
-  interval: 1m
-  path: ./clusters/kind-cluster/keycloak/cluster
+  path: ./clusters/kind-cluster/cloudnative-pg
   prune: true
   sourceRef:
     kind: GitRepository
@@ -123,6 +115,9 @@ spec:
   interval: 1m
   path: ./clusters/kind-cluster/keycloak
   prune: true
+  dependsOn:
+    - name: cloudnative-pg-sync
+      namespace: cloudnative-pg
   sourceRef:
     kind: GitRepository
     name: flux-system

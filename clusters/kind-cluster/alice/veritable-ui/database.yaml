@@ -1,0 +1,32 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: alice-veritable-ui-cnpg
+  namespace: alice
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  instances: 1
+  storage:
+    size: 1Gi
+  enableSuperuserAccess: false
+  bootstrap:
+    initdb:
+      database: veritable-ui
+      owner: alice
+      import:
+        type: microservice
+        databases:
+          - veritable-ui
+        source:
+          externalCluster: ui-vui-postgresql
+  externalClusters:
+    - name: ui-vui-postgresql
+      connectionParameters:
+        host: ui-vui-postgresql.alice.svc.cluster.local
+        port: "5432"
+        user: postgres
+        dbname: postgres
+      password:
+        name: ui-vui-postgresql
+        key: postgres-password

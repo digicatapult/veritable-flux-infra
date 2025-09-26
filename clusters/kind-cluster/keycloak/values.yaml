@@ -18,7 +18,7 @@ ingress:
           pathType: Prefix
 database:
   vendor: postgres
-  hostname: postgresql-cluster-rw.keycloak.svc.cluster.local
+  hostname: keycloak-cnpg-rw.keycloak.svc.cluster.local
   port: 5432
   database: keycloak
   username: keycloak

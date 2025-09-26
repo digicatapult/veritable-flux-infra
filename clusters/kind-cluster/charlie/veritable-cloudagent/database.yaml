@@ -1,0 +1,32 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: charlie-veritable-cloudagent-cnpg
+  namespace: charlie
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  instances: 1
+  storage:
+    size: 1Gi
+  enableSuperuserAccess: false
+  bootstrap:
+    initdb:
+      database: wallet-id
+      owner: charlie
+      import:
+        type: microservice
+        databases:
+          - wallet-id
+        source:
+          externalCluster: charlie-veritable-cloudagent-postgresql
+  externalClusters:
+    - name: charlie-veritable-cloudagent-postgresql
+      connectionParameters:
+        host: charlie-veritable-cloudagent-postgresql.charlie.svc.cluster.local
+        port: "5432"
+        user: postgres
+        dbname: postgres
+      password:
+        name: charlie-veritable-cloudagent-postgresql
+        key: postgres-password

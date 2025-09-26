@@ -1,0 +1,32 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: alice-veritable-cloudagent-cnpg
+  namespace: alice
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  instances: 1
+  storage:
+    size: 1Gi
+  enableSuperuserAccess: false
+  bootstrap:
+    initdb:
+      database: wallet-id
+      owner: alice
+      import:
+        type: microservice
+        databases:
+          - wallet-id
+        source:
+          externalCluster: alice-veritable-cloudagent-postgresql
+  externalClusters:
+    - name: alice-veritable-cloudagent-postgresql
+      connectionParameters:
+        host: alice-veritable-cloudagent-postgresql.alice.svc.cluster.local
+        port: "5432"
+        user: postgres
+        dbname: postgres
+      password:
+        name: alice-veritable-cloudagent-postgresql
+        key: postgres-password
