@@ -3,11 +3,6 @@ kind: Kustomization
 namespace: keycloak
 resources:
   - database.yaml
-  - release.yaml
-configMapGenerator:
-  - name: cluster-values
-    files:
-      - values.yaml=values.yaml
 configurations:
   - kustomize-config.yaml
 generatorOptions:

@@ -45,3 +45,11 @@ metadata:
   labels:
     app.kubernetes.io/component: cert-manager
     pod-security.kubernetes.io/enforce: privileged
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: veritable
+    app.kubernetes.io/version: latest
+  name: cloudnative-pg

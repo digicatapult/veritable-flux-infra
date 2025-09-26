@@ -8,22 +8,20 @@ spec:
   name: keycloak
   owner: keycloak
   cluster:
-    name: postgresql-cluster
-  databaseReclaimPolicy: delete
+    name: keycloak-cnpg
+  databaseReclaimPolicy: retain
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgresql-cluster
+  name: keycloak-cnpg
 spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
   instances: 1
   storage:
-    size: 8Gi
+    size: 1Gi
   managed:
     roles:
-    - name: app
-      createdb: true
-      login: true
     - name: keycloak
       ensure: present
       login: true
@@ -39,7 +37,7 @@ spec:
         - pg_monitor
         - pg_signal_backend
       passwordSecret:
-        name: postgresql-role-secret
+        name: keycloak-cnpg-creds
 ---
 apiVersion: v1
 data:
@@ -47,6 +45,6 @@ data:
   password: a2V5Y2xvYWs=
 kind: Secret
 metadata:
-  name: postgresql-role-secret
+  name: keycloak-cnpg-creds
   namespace: keycloak
 type: kubernetes.io/basic-auth

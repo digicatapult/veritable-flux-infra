@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: keycloak
+namespace: cloudnative-pg
 resources:
   - release.yaml
+  - source.yaml
 configMapGenerator:
   - name: cloudnative-pg-values
     files:
