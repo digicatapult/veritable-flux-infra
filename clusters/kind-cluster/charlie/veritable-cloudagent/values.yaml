@@ -14,7 +14,7 @@ externalDatabase:
   port: 5432
   user: cloudagent
   password: cloudagent
-  database: walletId
+  database: wallet-id
   create: true
   existingSecret: charlie-veritable-cloudagent-cnpg-creds
   postgresqlPostgresUser: postgres
