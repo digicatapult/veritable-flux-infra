@@ -1,4 +1,5 @@
 label: "Charlie Veritable Cloud Agent REST API"
+walletId: wallet_id
 walletkey:
   secret: charlie
 logLevel: trace
@@ -12,9 +13,9 @@ postgresql:
 externalDatabase:
   host: charlie-veritable-cloudagent-cnpg-rw.charlie.svc.cluster.local
   port: 5432
-  user: cloudagent
-  password: cloudagent
-  database: wallet-id
+  user: veritable_cloudagent
+  password: veritable_cloudagent
+  database: wallet_id
   create: true
   existingSecret: charlie-veritable-cloudagent-cnpg-creds
   postgresqlPostgresUser: postgres
