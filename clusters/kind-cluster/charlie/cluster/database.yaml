@@ -10,7 +10,8 @@ spec:
   storage:
     size: 1Gi
   enableSuperuserAccess: true
-  superuserSecret: charlie-veritable-cloudagent-cnpg-creds
+  superuserSecret:
+    name: charlie-veritable-cloudagent-cnpg-creds
 ---
 apiVersion: v1
 data:
