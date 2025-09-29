@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 data:
   username: dmVyaXRhYmxlLXVp
-  password: dmVyaXRhYmxlLXVp
+  password: cGFzc3dvcmQ=
   postgres-password: cG9zdGdyZXM=
 kind: Secret
 metadata:
