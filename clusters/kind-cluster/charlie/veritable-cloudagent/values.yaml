@@ -14,7 +14,7 @@ externalDatabase:
   port: 5432
   user: veritable-cloudagent
   password: veritable-cloudagent
-  database: wallet-id
+  database: walletId
   create: false
   postgresqlPostgresUser: postgres
   postgresqlPostgresPassword: postgres

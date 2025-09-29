@@ -11,7 +11,7 @@ spec:
     size: 1Gi
   bootstrap:
     initdb:
-      database: wallet-id
+      database: walletId
       owner: veritable-cloudagent
       secret:
         name: charlie-veritable-cloudagent-cnpg-creds
