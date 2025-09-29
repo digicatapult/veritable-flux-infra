@@ -8,27 +8,13 @@ ingress:
 # https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
 # Bitnami Legacy images
 postgresql:
-  global:
-    security:
-      allowInsecureImages: true
-  image:
-    repository: bitnamilegacy/postgresql
-    tag: 17.5.0-debian-12-r9
-  volumePermissions:
-    image:
-      repository: bitnamilegacy/os-shell
-      tag: 12-debian-12-r50
-  auth:
-    password: postgres
-  metrics:
-    image:
-      repository: bitnamilegacy/postgres-exporter
-      tag: 0.17.1-debian-12-r14
-    enabled: true
-    serviceMonitor:
-      enabled: true
-      namespace: monitoring
-      relabelings:
-        - action: replace
-          sourceLabels: [namespace]
-          targetLabel: kubernetes_namespace
+  enabled: false
+externalDatabase:
+  host: charlie-veritable-cloudagent-cnpg-rw.keycloak.svc.cluster.local
+  port: 5432
+  user: veritable-cloudagent
+  password: veritable-cloudagent
+  database: wallet-id
+  create: false
+  postgresqlPostgresUser: postgres
+  postgresqlPostgresPassword: postgres
