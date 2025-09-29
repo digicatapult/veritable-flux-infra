@@ -17,4 +17,3 @@ externalDatabase:
   database: walletId
   create: true
   postgresqlPostgresUser: postgres
-  postgresqlPostgresPassword: postgres
