@@ -16,4 +16,6 @@ externalDatabase:
   password: cloudagent
   database: walletId
   create: true
+  existingSecret: charlie-veritable-cloudagent-cnpg-creds
   postgresqlPostgresUser: postgres
+  postgresqlPostgresPassword: postgres

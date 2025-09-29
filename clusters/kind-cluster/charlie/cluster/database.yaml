@@ -9,3 +9,21 @@ spec:
   instances: 1
   storage:
     size: 1Gi
+  managed:
+    roles:
+    - name: postgres
+      ensure: present
+      superuser: true
+      passwordSecret:
+        name: charlie-veritable-cloudagent-cnpg-creds
+---
+apiVersion: v1
+data:
+  username: cG9zdGdyZXM=
+  password: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: charlie-veritable-cloudagent-cnpg-creds
+  labels:
+    cnpg.io/reload: "true"
+type: kubernetes.io/basic-auth
