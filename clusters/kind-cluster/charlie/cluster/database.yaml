@@ -9,19 +9,3 @@ spec:
   instances: 1
   storage:
     size: 1Gi
-  bootstrap:
-    initdb:
-      database: walletId
-      owner: veritable-cloudagent
-      secret:
-        name: charlie-veritable-cloudagent-cnpg-creds
----
-apiVersion: v1
-data:
-  username: dmVyaXRhYmxlLWNsb3VkYWdlbnQ=
-  password: dmVyaXRhYmxlLWNsb3VkYWdlbnQ=
-kind: Secret
-metadata:
-  name: charlie-veritable-cloudagent-cnpg-creds
-  namespace: charlie
-type: kubernetes.io/basic-auth
