@@ -9,13 +9,8 @@ spec:
   instances: 1
   storage:
     size: 1Gi
-  managed:
-    roles:
-    - name: postgres
-      ensure: present
-      superuser: true
-      passwordSecret:
-        name: charlie-veritable-cloudagent-cnpg-creds
+  enableSuperuserAccess: true
+  superuserSecret: charlie-veritable-cloudagent-cnpg-creds
 ---
 apiVersion: v1
 data:
