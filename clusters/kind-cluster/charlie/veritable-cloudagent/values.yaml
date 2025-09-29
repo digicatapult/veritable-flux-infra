@@ -15,6 +15,6 @@ externalDatabase:
   user: veritable-cloudagent
   password: veritable-cloudagent
   database: walletId
-  create: false
+  create: true
   postgresqlPostgresUser: postgres
   postgresqlPostgresPassword: postgres
