@@ -30,8 +30,8 @@ externalDatabase:
   user: postgres
   password: postgres
   database: veritable-ui
-  existingSecret: alice-veritable-ui-cnpg-creds
-  existingSecretPostgresPasswordKey: postgres-password
+  postgresPassword: postgres
+  postgresqlPostgresPassword: postgres
 ingress:
   hostname: localhost
   annotations:

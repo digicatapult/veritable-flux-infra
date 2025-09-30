@@ -16,13 +16,12 @@ spec:
     initdb:
       database: veritable-ui
       owner: veritable-ui
-      secret:
-        name: alice-veritable-ui-cnpg-creds
+      disablePassword: true
 ---
 apiVersion: v1
 data:
-  username: dmVyaXRhYmxlLXVp
-  password: cGFzc3dvcmQ=
+  username: cG9zdGdyZXM=
+  password: cG9zdGdyZXM=
   postgres-password: cG9zdGdyZXM=
 kind: Secret
 metadata:
