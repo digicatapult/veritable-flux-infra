@@ -1,34 +1,19 @@
 label: "Charlie Veritable Cloud Agent REST API"
+walletId: walletId
 walletkey:
   secret: charlie
 logLevel: trace
-endpoint: ["http://charlie-veritable-cloudagent.bob.svc.cluster.local:5002/"]
+endpoint: ["http://charlie-veritable-cloudagent.charlie.svc.cluster.local:5002/"]
 ingress:
   enabled: false
-# https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
-# Bitnami Legacy images
 postgresql:
-  global:
-    security:
-      allowInsecureImages: true
-  image:
-    repository: bitnamilegacy/postgresql
-    tag: 17.5.0-debian-12-r9
-  volumePermissions:
-    image:
-      repository: bitnamilegacy/os-shell
-      tag: 12-debian-12-r50
-  auth:
-    password: postgres
-  metrics:
-    image:
-      repository: bitnamilegacy/postgres-exporter
-      tag: 0.17.1-debian-12-r14
-    enabled: true
-    serviceMonitor:
-      enabled: true
-      namespace: monitoring
-      relabelings:
-        - action: replace
-          sourceLabels: [namespace]
-          targetLabel: kubernetes_namespace
+  enabled: false
+externalDatabase:
+  create: false
+  host: charlie-veritable-cloudagent-cnpg-rw.charlie.svc.cluster.local
+  port: 5432
+  user: postgres
+  password: postgres
+  database: wallet-id
+  postgresPassword: postgres
+  postgresqlPostgresPassword: postgres
