@@ -1,5 +1,5 @@
 label: "Alice Veritable UI"
-nameOverride: alice-veritable-ui
+fullnameOverride: alice-veritable-ui
 publicUrl: http://localhost:3080
 apiSwaggerTitle: Alice
 apiSwaggerBgColor: "#38b6ff"
