@@ -28,7 +28,7 @@ externalDatabase:
   host: alice-veritable-ui-cnpg-rw.alice.svc.cluster.local
   port: 5432
   user: veritable-ui
-  password: password
+  password: postgres
   database: veritable-ui
   existingSecret: alice-veritable-ui-cnpg-creds
   existingSecretPostgresPasswordKey: postgres-password
