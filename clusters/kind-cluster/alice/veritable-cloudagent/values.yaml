@@ -1,5 +1,5 @@
 label: "Alice Veritable Cloud Agent REST API"
-walletId: wallet-id
+walletId: walletId
 walletkey:
   secret: alice
 logLevel: trace
