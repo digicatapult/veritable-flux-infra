@@ -1,5 +1,5 @@
 label: "Bob Veritable Cloud Agent REST API"
-walletId: walletId
+walletId: wallet-id
 walletkey:
   secret: bob
 logLevel: trace
@@ -20,7 +20,7 @@ postgresql:
       repository: bitnamilegacy/os-shell
       tag: 12-debian-12-r50
   auth:
-    database: walletId
+    database: wallet-id
     password: postgres
   metrics:
     image:
