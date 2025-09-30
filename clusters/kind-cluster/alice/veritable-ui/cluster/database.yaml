@@ -16,7 +16,6 @@ spec:
     initdb:
       database: veritable-ui
       owner: veritable-ui
-      disablePassword: true
 ---
 apiVersion: v1
 data:
