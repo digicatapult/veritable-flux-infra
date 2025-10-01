@@ -1,5 +1,5 @@
 label: "Charlie Veritable Cloud Agent REST API"
-walletId: alice
+walletId: charlie
 walletkey:
   secret: charlie
 logLevel: trace
