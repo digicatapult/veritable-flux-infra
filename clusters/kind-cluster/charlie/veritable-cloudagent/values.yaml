@@ -1,5 +1,5 @@
 label: "Charlie Veritable Cloud Agent REST API"
-walletId: walletId
+walletId: alice
 walletkey:
   secret: charlie
 logLevel: trace
@@ -14,6 +14,6 @@ externalDatabase:
   port: 5432
   user: postgres
   password: postgres
-  database: wallet-id
+  database: veritable-cloudagent
   postgresPassword: postgres
   postgresqlPostgresPassword: postgres
