@@ -1,0 +1,29 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: bob-veritable-cloudagent-cnpg
+  namespace: bob
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  instances: 1
+  storage:
+    size: 1Gi
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: bob-veritable-cloudagent-cnpg-creds
+  bootstrap:
+    initdb:
+      database: veritable-cloudagent
+      owner: veritable-cloudagent
+---
+apiVersion: v1
+data:
+  username: cG9zdGdyZXM=
+  password: cG9zdGdyZXM=
+  postgres-password: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: bob-veritable-cloudagent-cnpg-creds
+  namespace: bob
+type: kubernetes.io/basic-auth

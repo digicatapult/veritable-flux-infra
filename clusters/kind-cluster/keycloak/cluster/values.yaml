@@ -1,9 +1,0 @@
-# https://github.com/cloudnative-pg/charts/blob/main/charts/cluster/values.yaml
-type: postgresql
-mode: standalone
-version:
-  postgresql: "17.4"
-cluster:
-  instances: 1
-backups:
-  enabled: false
