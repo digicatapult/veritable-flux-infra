@@ -14,7 +14,7 @@ spec:
     name: charlie-veritable-cloudagent-cnpg-creds
   bootstrap:
     initdb:
-      database: wallet-id
+      database: veritable-cloudagent
       owner: veritable-cloudagent
 ---
 apiVersion: v1
