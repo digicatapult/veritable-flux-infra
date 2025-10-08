@@ -4,16 +4,25 @@ logLevel: trace
 ingress:
   enabled: false
 postgresql:
-  enabled: false
-externalDatabase:
-  create: false
-  host: cloudagent-cnpg-rw.eve.svc.cluster.local
-  port: 5432
-  user: cloudagent
-  database: walletId
-  existingSecret: eve-cloudagent-cnpg-creds
-  existingSecretPasswordKey: password
-  existingSecretPostgresPasswordKey: pgpass
+  global:
+    security:
+      allowInsecureImages: true
+  image:
+    repository: bitnamilegacy/postgresql
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
+  primary:
+    persistence:
+      storageClass: managed-csi-premium
+      size: 5Gi
+  metrics:
+    enabled: true
+    image:
+      repository: bitnamilegacy/postgres-exporter
+    serviceMonitor:
+      enabled: true
+      namespace: eve
 ipfs:
   persistence:
     size: 5Gi
