@@ -10,9 +10,9 @@ externalDatabase:
   create: false
   host: cloudagent-cnpg-rw.eve.svc.cluster.local
   port: 5432
-  user: cloudagent
+  user: postgres
   database: walletId
-  existingSecret: eve-cloudagent-cnpg-creds
+  existingSecret: eve-cloudagent-cnpg-superuser-creds
   existingSecretPasswordKey: password
   existingSecretPostgresPasswordKey: pgpass
 ipfs:
