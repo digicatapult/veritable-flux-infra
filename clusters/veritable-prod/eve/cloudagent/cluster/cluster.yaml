@@ -1,0 +1,37 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cloudagent-cnpg
+  namespace: eve
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.4
+  instances: 1
+  storage:
+    size: 5Gi
+    storageClass: managed-csi-premium
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: eve-cloudagent-cnpg-superuser-creds
+  bootstrap:
+    initdb:
+      database: walletId
+      owner: cloudagent
+      secret:
+        name: eve-cloudagent-cnpg-creds
+      import:
+        type: microservice
+        databases:
+          - walletId
+        source:
+          externalCluster: cloudagent-postgresql
+  externalClusters:
+    - name: cloudagent-postgresql
+      connectionParameters:
+        host: cloudagent-postgresql.eve.svc.cluster.local
+        port: "5432"
+        user: postgres
+        dbname: postgres
+      password:
+        name: cloudagent-postgresql
+        key: postgres-password

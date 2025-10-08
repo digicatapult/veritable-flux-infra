@@ -27,7 +27,3 @@ spec:
       name: eve-wallet-key
       valuesKey: key
       targetPath: walletKey.secret
-    - kind: Secret
-      name: eve-cloudagent-postgres-creds
-      valuesKey: password
-      targetPath: postgresql.auth.password
