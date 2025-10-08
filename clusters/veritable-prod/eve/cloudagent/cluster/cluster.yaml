@@ -33,5 +33,5 @@ spec:
         user: postgres
         dbname: postgres
       password:
-        name: cloudagent-postgresql
+        name: eve-cloudagent-cnpg-superuser-creds
         key: postgres-password
