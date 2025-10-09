@@ -25,6 +25,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: charlie
+externalDatabase:
+  create: false
+  host: cloudagent-cnpg-rw.charlie.svc.cluster.local
+  port: 5432
+  user: cloudagent
+  database: walletId
+  existingSecret: charlie-cloudagent-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ipfs:
   persistence:
     size: 5Gi
