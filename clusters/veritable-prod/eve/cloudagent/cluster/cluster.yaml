@@ -15,7 +15,7 @@ spec:
     name: eve-cloudagent-cnpg-superuser-creds
   bootstrap:
     initdb:
-      database: walletId
+      database: eve
       owner: cloudagent
       secret:
         name: eve-cloudagent-cnpg-creds
