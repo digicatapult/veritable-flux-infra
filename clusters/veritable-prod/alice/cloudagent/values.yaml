@@ -25,6 +25,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: alice
+externalDatabase:
+  create: false
+  host: cloudagent-cnpg-rw.alice.svc.cluster.local
+  port: 5432
+  user: cloudagent
+  database: walletId
+  existingSecret: alice-cloudagent-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ipfs:
   persistence:
     size: 5Gi
