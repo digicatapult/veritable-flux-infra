@@ -25,6 +25,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: bob
+externalDatabase:
+  create: false
+  host: cloudagent-cnpg-rw.bob.svc.cluster.local
+  port: 5432
+  user: cloudagent
+  database: walletId
+  existingSecret: bob-cloudagent-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ipfs:
   persistence:
     size: 5Gi
