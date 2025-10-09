@@ -25,6 +25,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: dave
+externalDatabase:
+  create: false
+  host: cloudagent-cnpg-rw.dave.svc.cluster.local
+  port: 5432
+  user: cloudagent
+  database: walletId
+  existingSecret: dave-cloudagent-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ipfs:
   persistence:
     size: 5Gi
