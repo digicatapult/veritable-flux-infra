@@ -29,7 +29,7 @@ externalDatabase:
   port: 5432
   user: cloudagent
   database: walletId
-  existingSecret: eve-cloudagent-cnpg-superuser-creds
+  existingSecret: eve-cloudagent-cnpg-creds
   existingSecretPasswordKey: password
   existingSecretPostgresPasswordKey: pgpass
 ipfs:
