@@ -1,6 +1,5 @@
 label: Eve veritable-cloudagent REST API
 endpoint: "http://cloudagent-veritable-cloudagent.eve.svc.cluster.local:5002"
-walletId: eve
 logLevel: trace
 ingress:
   enabled: false
@@ -29,7 +28,7 @@ externalDatabase:
   host: cloudagent-cnpg-rw.eve.svc.cluster.local
   port: 5432
   user: cloudagent
-  database: eve
+  database: walletId
   existingSecret: eve-cloudagent-cnpg-superuser-creds
   existingSecretPasswordKey: password
   existingSecretPostgresPasswordKey: pgpass
