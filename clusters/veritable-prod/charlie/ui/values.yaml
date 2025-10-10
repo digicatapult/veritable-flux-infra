@@ -32,6 +32,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: charlie
+externalDatabase:
+  create: false
+  host: ui-cnpg-rw.charlie.svc.cluster.local
+  port: 5432
+  user: veritable-ui
+  database: veritable-ui
+  existingSecret: charlie-ui-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ingress:
   hostname: charlie.vrtbl.com
   ingressClassName: nginx-charlie

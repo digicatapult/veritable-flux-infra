@@ -32,6 +32,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: alice
+externalDatabase:
+  create: false
+  host: ui-cnpg-rw.alice.svc.cluster.local
+  port: 5432
+  user: veritable-ui
+  database: veritable-ui
+  existingSecret: alice-ui-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ingress:
   hostname: alice.vrtbl.com
   ingressClassName: nginx-alice

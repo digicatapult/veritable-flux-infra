@@ -32,6 +32,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: bob
+externalDatabase:
+  create: false
+  host: ui-cnpg-rw.bob.svc.cluster.local
+  port: 5432
+  user: veritable-ui
+  database: veritable-ui
+  existingSecret: bob-ui-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ingress:
   hostname: bob.vrtbl.com
   ingressClassName: nginx-bob
