@@ -32,6 +32,15 @@ postgresql:
     serviceMonitor:
       enabled: true
       namespace: eve
+externalDatabase:
+  create: false
+  host: ui-cnpg-rw.eve.svc.cluster.local
+  port: 5432
+  user: veritable-ui
+  database: veritable-ui
+  existingSecret: eve-ui-cnpg-creds
+  existingSecretPasswordKey: password
+  existingSecretPostgresPasswordKey: pgpass
 ingress:
   hostname: eve.vrtbl.com
   ingressClassName: nginx-eve
