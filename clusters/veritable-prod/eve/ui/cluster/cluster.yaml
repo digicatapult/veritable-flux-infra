@@ -1,0 +1,37 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: ui-cnpg
+  namespace: eve
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.4
+  instances: 1
+  storage:
+    size: 5Gi
+    storageClass: managed-csi-premium
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: eve-ui-cnpg-superuser-creds
+  bootstrap:
+    initdb:
+      database: veritable-ui
+      owner: veritable-ui
+      secret:
+        name: eve-ui-cnpg-creds
+      import:
+        type: microservice
+        databases:
+          - veritable-ui
+        source:
+          externalCluster: ui-vui-postgresql
+  externalClusters:
+    - name: ui-vui-postgresql
+      connectionParameters:
+        host: ui-vui-postgresql.eve.svc.cluster.local
+        port: "5432"
+        user: postgres
+        dbname: postgres
+      password:
+        name: eve-ui-cnpg-superuser-creds
+        key: postgres-password
