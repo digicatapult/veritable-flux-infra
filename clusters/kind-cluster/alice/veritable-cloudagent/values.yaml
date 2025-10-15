@@ -6,7 +6,7 @@ logLevel: trace
 endpoint: ["http://alice-veritable-cloudagent.alice.svc.cluster.local:5002/"]
 ingress:
   enabled: false
-postgresql:
+cnpg:
   enabled: false
 externalDatabase:
   create: false

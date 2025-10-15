@@ -6,7 +6,7 @@ logLevel: trace
 endpoint: ["http://bob-veritable-cloudagent.bob.svc.cluster.local:5002/"]
 ingress:
   enabled: false
-postgresql:
+cnpg:
   enabled: false
 externalDatabase:
   create: false
