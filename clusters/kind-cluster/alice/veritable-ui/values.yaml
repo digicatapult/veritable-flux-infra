@@ -20,7 +20,7 @@ smtpCredentials:
 invitationPin:
   enabled: true
   secret: secret
-postgresql:
+cnpg:
   enabled: false
 externalDatabase:
   create: false

@@ -6,7 +6,7 @@ logLevel: trace
 endpoint: ["http://charlie-veritable-cloudagent.charlie.svc.cluster.local:5002/"]
 ingress:
   enabled: false
-postgresql:
+cnpg:
   enabled: false
 externalDatabase:
   create: false
