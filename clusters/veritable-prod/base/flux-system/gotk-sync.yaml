@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: chore/add_replicas_to_mitigate_drainage_issues
   url: https://github.com/digicatapult/veritable-flux-infra.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
