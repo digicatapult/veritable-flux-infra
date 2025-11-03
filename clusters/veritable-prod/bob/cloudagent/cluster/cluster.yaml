@@ -6,7 +6,7 @@ metadata:
   namespace: bob
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17.4
-  instances: 1
+  instances: 2
   storage:
     size: 5Gi
     storageClass: managed-csi-premium
