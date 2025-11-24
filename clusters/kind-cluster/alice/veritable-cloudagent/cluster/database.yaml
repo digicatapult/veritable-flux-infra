@@ -16,6 +16,7 @@ spec:
     initdb:
       database: veritable-cloudagent
       owner: veritable-cloudagent
+  enablePDB: false
 ---
 apiVersion: v1
 data:
