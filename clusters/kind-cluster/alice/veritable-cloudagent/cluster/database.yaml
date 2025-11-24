@@ -16,7 +16,7 @@ spec:
     initdb:
       database: veritable-cloudagent
       owner: veritable-cloudagent
-  enablePDB: true
+  enablePDB: false
 ---
 apiVersion: v1
 data:
@@ -28,3 +28,14 @@ metadata:
   name: alice-veritable-cloudagent-cnpg-creds
   namespace: alice
 type: kubernetes.io/basic-auth
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: alice-veritable-cloudagent-cnpg
+  namespace: alice
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: alice-veritable-cloudagent-cnpg
