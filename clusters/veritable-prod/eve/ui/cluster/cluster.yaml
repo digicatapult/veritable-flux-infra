@@ -35,3 +35,15 @@ spec:
       password:
         name: eve-ui-cnpg-superuser-creds
         key: postgres-password
+  enablePDB: false
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: ui-cnpg
+  namespace: eve
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: ui-cnpg
