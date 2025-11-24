@@ -39,4 +39,3 @@ spec:
   selector:
     matchLabels:
       cnpg.io/cluster: alice-veritable-ui-cnpg
-      kustomize.toolkit.fluxcd.io/namespace: alice
