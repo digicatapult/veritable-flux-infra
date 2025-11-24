@@ -16,7 +16,7 @@ spec:
     initdb:
       database: veritable-ui
       owner: veritable-ui
-  enablePDB: false
+  enablePDB: true
 ---
 apiVersion: v1
 data:
