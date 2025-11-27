@@ -35,3 +35,14 @@ spec:
       password:
         name: dave-cloudagent-cnpg-superuser-creds
         key: postgres-password
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: cloudagent-cnpg
+  namespace: dave
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: cloudagent-cnpg
