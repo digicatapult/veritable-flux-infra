@@ -35,6 +35,7 @@ spec:
       password:
         name: keycloak-external-creds
         key: password
+  enablePDB: false
 ---
 apiVersion: policy/v1
 kind: PodDisruptionBudget

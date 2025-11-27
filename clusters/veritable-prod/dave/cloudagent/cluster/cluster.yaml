@@ -35,6 +35,7 @@ spec:
       password:
         name: dave-cloudagent-cnpg-superuser-creds
         key: postgres-password
+  enablePDB: false
 ---
 apiVersion: policy/v1
 kind: PodDisruptionBudget
