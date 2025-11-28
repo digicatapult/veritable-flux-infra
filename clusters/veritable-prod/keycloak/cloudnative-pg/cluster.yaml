@@ -35,3 +35,15 @@ spec:
       password:
         name: keycloak-external-creds
         key: password
+  enablePDB: false
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: keycloak-cnpg
+  namespace: keycloak
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: keycloak-cnpg

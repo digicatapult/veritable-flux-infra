@@ -35,3 +35,15 @@ spec:
       password:
         name: charlie-cloudagent-cnpg-superuser-creds
         key: postgres-password
+  enablePDB: false
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: cloudagent-cnpg
+  namespace: charlie
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: cloudagent-cnpg

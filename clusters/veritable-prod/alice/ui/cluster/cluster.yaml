@@ -35,3 +35,15 @@ spec:
       password:
         name: alice-ui-cnpg-superuser-creds
         key: postgres-password
+  enablePDB: false
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: ui-cnpg
+  namespace: alice
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      cnpg.io/cluster: ui-cnpg
