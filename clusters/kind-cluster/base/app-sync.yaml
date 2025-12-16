@@ -70,6 +70,23 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: traefik-sync
+  namespace: kube-system
+spec:
+  interval: 1m
+  path: ./clusters/kind-cluster/traefik
+  prune: true
+  dependsOn:
+    - name: monitoring-sync
+      namespace: monitoring
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: cloudnative-pg-sync
   namespace: cloudnative-pg
 spec:

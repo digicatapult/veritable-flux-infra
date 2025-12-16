@@ -1,0 +1,4 @@
+providers:
+  kubernetesIngressNginx:
+    enabled: true
+    ingressClass: "nginx"
