@@ -12,7 +12,7 @@ updateStrategy:
   type: Recreate
 providers:
   kubernetesIngress:
-    enabled: false
+    enabled: true
 hostNetwork: true
 dnsPolicy: ClusterFirstWithHostNet
 service:
