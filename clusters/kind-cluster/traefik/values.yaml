@@ -1,4 +1,44 @@
+# https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+deployment:
+  terminationGracePeriodSeconds: 60
+ingressClass:
+  enabled: true
+  name: traefik
+gateway:
+  enabled: false
+gatewayClass:
+  enabled: false
+updateStrategy:
+  type: Recreate
 providers:
-  kubernetesIngressNginx:
-    enabled: true
-    ingressClass: "nginx"
+  kubernetesIngress:
+    enabled: false
+hostNetwork: true
+dnsPolicy: ClusterFirstWithHostNet
+service:
+  type: NodePort
+ports:
+  web:
+    port: 3080
+    hostPort: 3080
+    containerPort: 80
+  websecure:
+    port: 3443
+    hostPort: 3443
+    containerPort: 443
+  metrics:
+    port: 9111
+#   nodeSelector:
+#     kubernetes.io/os: linux
+#   tolerations:
+#     - effect: NoSchedule
+#       key: node-role.kubernetes.io/master
+#       operator: Equal
+#     - effect: NoSchedule
+#       key: node-role.kubernetes.io/control-plane
+#       operator: Equal
+metrics:
+  prometheus:
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
