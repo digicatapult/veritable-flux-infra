@@ -32,6 +32,8 @@ ports:
     port: 443
     hostPort: 443
     containerPort: 443
+    tls:
+      enabled: false
   metrics:
     port: 9111
 #   nodeSelector:
