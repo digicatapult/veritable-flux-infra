@@ -15,7 +15,7 @@ api:
   insecure: true
 ingressRoute:
   dashboard:
-    enabled: false
+    enabled: true
 updateStrategy:
   type: Recreate
 providers:
