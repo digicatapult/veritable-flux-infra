@@ -12,8 +12,10 @@ api:
   dashboard: true
   debug: true
   disabledashboardad: true
-  basePath: /traefik
   insecure: true
+ingressRoute:
+  dashboard:
+    enabled: false
 updateStrategy:
   type: Recreate
 providers:
