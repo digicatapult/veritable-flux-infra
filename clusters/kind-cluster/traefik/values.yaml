@@ -12,7 +12,7 @@ api:
   dashboard: true
   debug: true
   disabledashboardad: true
-  basePath: traefik
+  basePath: /traefik
   insecure: true
 updateStrategy:
   type: Recreate
