@@ -19,12 +19,12 @@ service:
   type: NodePort
 ports:
   web:
-    port: 3080
-    hostPort: 3080
+    port: 80
+    hostPort: 80
     containerPort: 80
   websecure:
-    port: 3443
-    hostPort: 3443
+    port: 443
+    hostPort: 443
     containerPort: 443
   metrics:
     port: 9111
