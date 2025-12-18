@@ -50,10 +50,10 @@ nodes:
       kubeletExtraArgs:
         node-labels: "ingress-ready=true"
   extraPortMappings:
-  - containerPort: 80
+  - containerPort: 3080
     hostPort: 3080
     protocol: tcp
-  - containerPort: 443
+  - containerPort: 3443
     hostPort: 3443
     protocol: tcp
 - role: worker
