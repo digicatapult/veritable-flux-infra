@@ -56,9 +56,6 @@ nodes:
   - containerPort: 443
     hostPort: 3443
     protocol: tcp
-  - containerPort: 8080
-    hostPort: 8080
-    protocol: tcp
 - role: worker
 EOF
 fi

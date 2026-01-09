@@ -27,9 +27,9 @@ service:
   type: NodePort
 ports:
   traefik:
-    port: 8080
-    hostPort: 8080
-    containerPort: 8080
+    port: 3080
+    hostPort: 3080
+    containerPort: 3080
     expose:
       default: true
   web:
