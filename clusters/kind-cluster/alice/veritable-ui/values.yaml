@@ -34,9 +34,9 @@ externalDatabase:
 ingress:
   hostname: localhost
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  ingressClassName: nginx
+    traefik.ingress.kubernetes.io/router.entrypoints: "web"
+    traefik.ingress.kubernetes.io/router.tls: "false"
+  ingressClassName: traefik
   service:
     type: ClusterIP
 logLevel: trace
