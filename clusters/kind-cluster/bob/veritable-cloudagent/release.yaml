@@ -17,7 +17,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: digicatapult
-      version: 3.0.45
+      version: 3.0.46
   valuesFrom:
   - kind: ConfigMap
     name: bob-values
