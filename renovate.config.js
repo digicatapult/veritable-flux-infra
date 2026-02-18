@@ -29,13 +29,9 @@ module.exports = (config = {}) => {
     },
     packageRules: [
       {
-        matchManagers: [
-          "github-actions",
-        ],
-        matchPackageNames: [
-          "helm/kind-action"
-        ],
-        enabled: false
+        matchManagers: ["github-actions"],
+        matchPackageNames: ["helm/kind-action"],
+        allowedVersions: "<= 1.13.0"
       },
       {
         matchManagers: ["flux"],
