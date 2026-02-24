@@ -11,7 +11,7 @@ spec:
   releaseName: cert-manager
   chart:
     spec:
-      version: v1.19.3
+      version: v1.19.4
       chart: cert-manager
       sourceRef:
         kind: HelmRepository
