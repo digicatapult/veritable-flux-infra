@@ -1,5 +1,6 @@
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 deployment:
+  dnsPolicy: ClusterFirstWithHostNet
   terminationGracePeriodSeconds: 60
 ingressClass:
   enabled: true
@@ -11,7 +12,6 @@ gatewayClass:
 api:
   dashboard: true
   debug: true
-  disabledashboardad: true
   insecure: true
 ingressRoute:
   dashboard:
@@ -22,7 +22,6 @@ providers:
   kubernetesIngress:
     enabled: true
 hostNetwork: true
-dnsPolicy: ClusterFirstWithHostNet
 service:
   type: NodePort
 ports:
@@ -40,8 +39,9 @@ ports:
     port: 443
     hostPort: 443
     containerPort: 443
-    tls:
-      enabled: false
+    http:
+      tls:
+        enabled: false
   metrics:
     port: 9111
 nodeSelector:
