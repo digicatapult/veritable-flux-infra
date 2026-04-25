@@ -18,7 +18,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: digicatapult
-      version: 2.0.81
+      version: 2.0.82
   interval: 10m0s
   valuesFrom:
     - kind: ConfigMap
