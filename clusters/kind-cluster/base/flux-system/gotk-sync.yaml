@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: bug/investigate_veritable_ui_failures
   url: https://github.com/digicatapult/veritable-flux-infra.git
 
 ---
