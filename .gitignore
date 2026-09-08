@@ -4,3 +4,4 @@ clusters/*/secrets/*.unc.yaml
 .idea/
 .vscode/
 .DS_Store
+.devcontainer
