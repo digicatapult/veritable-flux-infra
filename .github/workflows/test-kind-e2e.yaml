@@ -147,6 +147,19 @@ jobs:
           kubectl get events -n "$ns" --sort-by=.lastTimestamp 2>&1
           echo "::endgroup::"
           exit 0
+      - name: Capture raw /v1/dids/create response body
+        if: failure()
+        run: |
+          set +e
+          kubectl run diag-curl-dids-create -n alice --rm -i --restart=Never \
+            --image=curlimages/curl:8.11.0 --command -- \
+            curl -sS -X POST \
+              -H 'Content-Type: application/json' \
+              -d '{"method":"key","options":{"keyType":"ed25519"}}' \
+              -w '\nHTTP_STATUS:%{http_code}\n' \
+              http://alice-veritable-cloudagent-admin.alice.svc.cluster.local:3000/v1/dids/create
+          echo "kubectl run exit code: $?"
+          exit 0
       - name: Debug Flux logs
         if: failure()
         run: flux logs --level=debug --all-namespaces
