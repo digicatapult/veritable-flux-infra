@@ -1,9 +1,9 @@
 label: "Charlie Veritable Cloud Agent REST API"
 walletId: charlie
-walletkey:
+walletKey:
   secret: charlie
 logLevel: trace
-endpoint: ["http://charlie-veritable-cloudagent.charlie.svc.cluster.local:5002/"]
+endpoint: "http://charlie-veritable-cloudagent.charlie.svc.cluster.local:5002/"
 ingress:
   enabled: false
 cnpg:

@@ -92,53 +92,60 @@ jobs:
           for set in $local_sets; do
             ns=$(echo ${set} | cut -d "#" -f 1)
             k=$(echo ${set} | cut -d "#" -f 2)
-            kubectl wait kustomization "${k}" -n "${ns}" --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=10m
+            kubectl wait kustomization "${k}" -n "${ns}" --for='jsonpath={.status.conditions[?(@.type=="Ready")].message}=Applied revision: '"$message" --timeout=5m
           done
           kubectl get kustomizations -A
-          kubectl wait helmrelease --all --all-namespaces --for=condition=ready --timeout=10m
+          kubectl wait helmrelease --all --all-namespaces --for=condition=ready --timeout=5m
           kubectl get helmreleases -A
       - name: Describe failing pods
         if: failure()
         run: |
           set +e
-          namespaces=$(kubectl get namespaces -o jsonpath='{.items[*].metadata.name}' 2>&1)
+          ns="alice"
+          all_pods=$(kubectl get pods -n "$ns" -o jsonpath='{.items[*].metadata.name}' 2>&1)
           ns_status=$?
           if [ $ns_status -ne 0 ]; then
-            echo "::warning::kubectl get namespaces failed (exit $ns_status): $namespaces"
+            echo "::warning::kubectl get pods -n $ns failed (exit $ns_status): $all_pods"
             exit 0
           fi
-          for ns in $namespaces; do
-            pods=$(kubectl get pods -n "$ns" -o jsonpath='{.items[*].metadata.name}' 2>&1)
-            for pod in $pods; do
-              echo "::group::Describe pod $ns/$pod"
-              kubectl describe pod "$pod" -n "$ns" 2>&1
+          # Scope to Alice's veritable-cloudagent, veritable-ui, and their CNPG pods only
+          pods=""
+          for pod in $all_pods; do
+            case "$pod" in
+              alice-veritable-ui*|alice-veritable-cloudagent*)
+                pods="$pods $pod"
+                ;;
+            esac
+          done
+          for pod in $pods; do
+            echo "::group::Describe pod $ns/$pod"
+            kubectl describe pod "$pod" -n "$ns" 2>&1
+            echo "::endgroup::"
+
+            containers=$(kubectl get pod "$pod" -n "$ns" -o jsonpath='{.spec.containers[*].name}' 2>&1)
+            for c in $containers; do
+              echo "::group::Logs $ns/$pod container=$c (current)"
+              kubectl logs "$pod" -n "$ns" -c "$c" --tail=500 2>&1
               echo "::endgroup::"
-
-              containers=$(kubectl get pod "$pod" -n "$ns" -o jsonpath='{.spec.containers[*].name}' 2>&1)
-              for c in $containers; do
-                echo "::group::Logs $ns/$pod container=$c (current)"
-                kubectl logs "$pod" -n "$ns" -c "$c" --tail=500 2>&1
-                echo "::endgroup::"
-                echo "::group::Logs $ns/$pod container=$c (previous)"
-                kubectl logs "$pod" -n "$ns" -c "$c" --previous --tail=500 2>&1
-                echo "::endgroup::"
-              done
-
-              init_containers=$(kubectl get pod "$pod" -n "$ns" -o jsonpath='{.spec.initContainers[*].name}' 2>&1)
-              for c in $init_containers; do
-                echo "::group::Init container logs $ns/$pod container=$c (current)"
-                kubectl logs "$pod" -n "$ns" -c "$c" --tail=500 2>&1
-                echo "::endgroup::"
-                echo "::group::Init container logs $ns/$pod container=$c (previous)"
-                kubectl logs "$pod" -n "$ns" -c "$c" --previous --tail=500 2>&1
-                echo "::endgroup::"
-              done
+              echo "::group::Logs $ns/$pod container=$c (previous)"
+              kubectl logs "$pod" -n "$ns" -c "$c" --previous --tail=500 2>&1
+              echo "::endgroup::"
             done
 
-            echo "::group::Events for namespace $ns"
-            kubectl get events -n "$ns" --sort-by=.lastTimestamp 2>&1
-            echo "::endgroup::"
+            init_containers=$(kubectl get pod "$pod" -n "$ns" -o jsonpath='{.spec.initContainers[*].name}' 2>&1)
+            for c in $init_containers; do
+              echo "::group::Init container logs $ns/$pod container=$c (current)"
+              kubectl logs "$pod" -n "$ns" -c "$c" --tail=500 2>&1
+              echo "::endgroup::"
+              echo "::group::Init container logs $ns/$pod container=$c (previous)"
+              kubectl logs "$pod" -n "$ns" -c "$c" --previous --tail=500 2>&1
+              echo "::endgroup::"
+            done
           done
+
+          echo "::group::Events for namespace $ns"
+          kubectl get events -n "$ns" --sort-by=.lastTimestamp 2>&1
+          echo "::endgroup::"
           exit 0
       - name: Debug Flux logs
         if: failure()
