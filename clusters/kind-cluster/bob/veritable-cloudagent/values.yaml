@@ -1,9 +1,9 @@
 label: "Bob Veritable Cloud Agent REST API"
 walletId: bob
-walletkey:
+walletKey:
   secret: bob
 logLevel: trace
-endpoint: ["http://bob-veritable-cloudagent.bob.svc.cluster.local:5002/"]
+endpoint: "http://bob-veritable-cloudagent.bob.svc.cluster.local:5002/"
 ingress:
   enabled: false
 cnpg:
