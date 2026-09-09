@@ -151,11 +151,17 @@ jobs:
         if: failure()
         run: |
           set +e
+          # Payload matches the credo-ts ^0.7.0 KMS-based DID-key creation API
+          # (see @credo-ts/core KeyDidRegistrar), and mirrors the request body
+          # veritable-ui actually sends via createDid() in credentialSchema.ts.
+          # The previous "keyType" field was removed upstream in credo-ts 0.7.0
+          # and produced a misleading "keyId" validation error unrelated to the
+          # real DID creation failure.
           kubectl run diag-curl-dids-create -n alice --rm -i --restart=Never \
             --image=curlimages/curl:8.11.0 --command -- \
             curl -sS -X POST \
               -H 'Content-Type: application/json' \
-              -d '{"method":"key","options":{"keyType":"ed25519"}}' \
+              -d '{"method":"key","options":{"createKey":{"type":{"kty":"OKP","crv":"Ed25519"}}}}' \
               -w '\nHTTP_STATUS:%{http_code}\n' \
               http://alice-veritable-cloudagent-admin.alice.svc.cluster.local:3000/v1/dids/create
           echo "kubectl run exit code: $?"
