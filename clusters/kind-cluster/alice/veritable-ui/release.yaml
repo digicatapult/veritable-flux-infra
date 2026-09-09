@@ -25,4 +25,4 @@ spec:
       name: alice-values
       valuesKey: values-veritable-ui.yaml
   dependsOn:
-    - name: cloudagent
+    - name: alice-veritable-cloudagent
