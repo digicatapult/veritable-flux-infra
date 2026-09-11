@@ -24,3 +24,5 @@ spec:
     - kind: ConfigMap
       name: alice-values
       valuesKey: values-veritable-ui.yaml
+  dependsOn:
+    - name: alice-veritable-cloudagent
