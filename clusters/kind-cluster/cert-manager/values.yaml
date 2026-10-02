@@ -6,7 +6,6 @@ prometheus:
   servicemonitor:
     enabled: false
     namespace: cert-manager
-    targetPort: 9402
     endpointAdditionalProperties:
       relabelings:
       - action: replace
