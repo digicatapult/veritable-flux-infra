@@ -77,7 +77,7 @@ This instructs FluxCD that it should examine the URI for deployable OCI packages
 New components will typically also require the `HelmRelease` resource, describing the actual service to deploy:
 
 ```yaml
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: demo-api
