@@ -86,8 +86,7 @@ jobs:
             --url=${{ github.event.repository.html_url }} \
             --branch=${surrogate} \
             --username=${GITHUB_ACTOR} \
-            --password=${{ secrets.GITHUB_TOKEN }} \
-            --export | kubectl apply -f -
+            --password=${{ secrets.GITHUB_TOKEN }}
           flux resume kustomization --all
           message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
           sets=$(kubectl get kustomizations -A -o jsonpath='{range .items[*]}{@.metadata.namespace}{"#"}{@.metadata.name}{"#"}{@.spec.sourceRef.name}{"\n"}{end}')

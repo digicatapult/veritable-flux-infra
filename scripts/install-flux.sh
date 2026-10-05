@@ -125,20 +125,19 @@ setup_flux_git_source() {
   local context="$1"
   local repo="$2"
   local branch="$3"
-  printf "Applying Git source from %s on branch %s in %s...\n" "$repo" "$branch" "$context"
+  printf "Creating Git source from %s on branch %s in %s...\n" "$repo" "$branch" "$context"
   flux create source git --context="$context" --interval=1m --namespace=flux-system \
-    --branch="$branch" --url="$repo" flux-system --export | kubectl --context "$context" apply -f -
-  printf "OK\nGitRepository/flux-system applied in %s\n" "$context"
+    --branch="$branch" --url="$repo" flux-system
+  printf "OK\nGitRepository/flux-system created in %s\n" "$context"
 }
 
 setup_flux_kustomization() {
   local context="$1"
   local path="$2"
-  printf "Applying Kustomization from %s in %s...\n" "$path" "$context"
+  printf "Creating Kustomization from %s in %s...\n" "$path" "$context"
   flux create kustomization --context="$context" --interval=10m --namespace=flux-system \
-    --path="$path" --prune --source=flux-system --validation=client flux-system --export | \
-    kubectl --context "$context" apply -f -
-  printf "OK\nKustomization/flux-system applied in %s\n" "$context"
+    --path="$path" --prune --source=flux-system flux-system
+  printf "OK\nKustomization/flux-system created in %s\n" "$context"
 }
 
 assert_command kubectl
