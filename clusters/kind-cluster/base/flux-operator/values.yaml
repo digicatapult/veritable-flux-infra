@@ -1,0 +1,9 @@
+# https://fluxoperator.dev/docs/charts/flux-operator/
+installCRDs: true
+logLevel: debug
+web:
+  enabled: true
+  ingress:
+    enabled: false
+  httpRoute:
+    enabled: false
