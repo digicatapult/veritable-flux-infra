@@ -31,7 +31,7 @@ module.exports = (config = {}) => {
       {
         customType: "regex",
         managerFilePatterns: [
-          "/clusters/kind-cluster/flux/flux-instance\\.yaml$/",
+          "/clusters/kind-cluster/flux/instance/flux-instance\\.yaml$/",
         ],
         matchStrings: [
           "version:\\s*\\\"(?<currentValue>[^\\\"\\s]+)\\\"",
@@ -58,7 +58,7 @@ module.exports = (config = {}) => {
       {
         matchManagers: ["custom.regex"],
         matchPackageNames: ["fluxcd/flux2"],
-        matchFileNames: ["clusters/kind-cluster/flux/flux-instance.yaml"],
+        matchFileNames: ["clusters/kind-cluster/flux/instance/flux-instance.yaml"],
         matchUpdateTypes: ["major"],
         automerge: false,
         labels: ["dependencies", "flux", "kind"],

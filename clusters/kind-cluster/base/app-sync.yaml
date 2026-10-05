@@ -124,7 +124,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./clusters/kind-cluster/base/flux-operator
+  path: ./clusters/kind-cluster/flux/operator
   prune: true
   sourceRef:
     kind: GitRepository
@@ -143,7 +143,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./clusters/kind-cluster/flux
+  path: ./clusters/kind-cluster/flux/instance
   prune: true
   sourceRef:
     kind: GitRepository
@@ -160,7 +160,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./clusters/kind-cluster/base/flux-web
+  path: ./clusters/kind-cluster/flux/web
   prune: true
   sourceRef:
     kind: GitRepository

@@ -73,8 +73,8 @@ jobs:
           surrogate="kind/${GITHUB_HEAD_REF}"
           echo "${surrogate}"
           sed -i -r "s#(ref: refs/heads/).*#\1${surrogate}#" \
-            ./clusters/kind-cluster/flux/flux-instance.yaml
-          git add ./clusters/kind-cluster/flux/flux-instance.yaml
+            ./clusters/kind-cluster/flux/instance/flux-instance.yaml
+          git add ./clusters/kind-cluster/flux/instance/flux-instance.yaml
           git commit -m "Patch GitOps branch to match PR"
           git push -u origin $surrogate
       - name: Reconcile the update

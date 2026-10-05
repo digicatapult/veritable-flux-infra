@@ -75,9 +75,9 @@ again only if the operator-managed controllers or root sync become unhealthy.
 ## Kind clusters
 
 The Kind cluster applies Flux Operator from
-`clusters/kind-cluster/base/flux-operator` and waits for its HelmRelease in
+`clusters/kind-cluster/flux/operator` and waits for its HelmRelease in
 `flux-operator-sync`. The dependent `flux-instance-sync` Kustomization applies
-`clusters/kind-cluster/flux/flux-instance.yaml`.
+`clusters/kind-cluster/flux/instance/flux-instance.yaml`.
 
 The FluxInstance synchronizes `clusters/kind-cluster/base` from `main`. Its
 `FluxInstance.spec.sync` is the replacement for the deleted Kind
