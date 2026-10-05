@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: flux-web
+  namespace: flux-system
+spec:
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    remediation:
+      retries: -1
+  releaseName: flux-web
+  chart:
+    spec:
+      chart: flux-operator
+      sourceRef:
+        kind: HelmRepository
+        name: flux-operator
+      version: "0.61.0"
+  interval: 10m0s
+  valuesFrom:
+    - kind: ConfigMap
+      name: flux-web-values
+      valuesKey: values.yaml
