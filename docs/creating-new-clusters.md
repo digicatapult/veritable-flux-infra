@@ -10,6 +10,10 @@
 
 ### Install FluxCD onto your cluster
 
+These steps establish a conventional Flux bootstrap. To hand its controllers and
+root sync resources to Flux Operator afterwards, follow [Migrating to Flux
+Operator](./migrating-to-flux-operator.md).
+
 Check your current Kubernetes context and change if necessary:
 
 ```sh

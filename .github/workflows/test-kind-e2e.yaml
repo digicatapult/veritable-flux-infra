@@ -60,6 +60,9 @@ jobs:
           --path=./clusters/kind-cluster/base
       - name: Verify Flux kustomizations
         run: |
+          kubectl wait helmrelease flux-operator -n flux-system --for=condition=ready --timeout=10m
+          kubectl wait kustomization flux-instance-sync -n flux-system --for=condition=ready --timeout=10m
+          kubectl wait fluxinstance flux -n flux-system --for=condition=ready --timeout=10m
           kubectl wait -A kustomization -l kustomize.toolkit.fluxcd.io/name=flux-system --for=condition=ready --timeout=10m
       - name: Verify Helm releases
         run: |
@@ -69,10 +72,10 @@ jobs:
         run: |
           surrogate="kind/${GITHUB_HEAD_REF}"
           echo "${surrogate}"
-          sed -i -r "s#(branch:).*#\1 $surrogate#" \
-            ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
-          git add ./clusters/kind-cluster/base/flux-system/gotk-sync.yaml
-          git commit -am "Patch GitOps branch to match PR"
+          sed -i -r "s#(ref: refs/heads/).*#\1${surrogate}#" \
+            ./clusters/kind-cluster/flux/flux-instance.yaml
+          git add ./clusters/kind-cluster/flux/flux-instance.yaml
+          git commit -m "Patch GitOps branch to match PR"
           git push -u origin $surrogate
       - name: Reconcile the update
         if: success()
@@ -80,10 +83,11 @@ jobs:
           surrogate="kind/${GITHUB_HEAD_REF}"
           flux suspend kustomization --all
           flux create source git flux-system \
-          --url=${{ github.event.repository.html_url }} \
-          --branch=${surrogate} \
-          --username=${GITHUB_ACTOR} \
-          --password=${{ secrets.GITHUB_TOKEN }}
+            --url=${{ github.event.repository.html_url }} \
+            --branch=${surrogate} \
+            --username=${GITHUB_ACTOR} \
+            --password=${{ secrets.GITHUB_TOKEN }} \
+            --export | kubectl apply -f -
           flux resume kustomization --all
           message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
           sets=$(kubectl get kustomizations -A -o jsonpath='{range .items[*]}{@.metadata.namespace}{"#"}{@.metadata.name}{"#"}{@.spec.sourceRef.name}{"\n"}{end}')
