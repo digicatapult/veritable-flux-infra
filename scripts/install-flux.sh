@@ -55,10 +55,7 @@ assert_command() {
   local command="$1"
 
   printf "Checking for presence of %s..." "$command"
-  local path_to_executable
-  path_to_executable="$(command -v "$command")"
-
-  if [[ -z "$path_to_executable" ]]; then
+  if ! command -v "$command" > /dev/null; then
     printf "Cannot find %s executable. Is it on your \$PATH?\n" "$command"
     exit 1
   fi

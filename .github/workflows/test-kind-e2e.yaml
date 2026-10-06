@@ -60,6 +60,7 @@ jobs:
           --path=./clusters/kind-cluster/base
       - name: Verify Flux kustomizations
         run: |
+          kubectl wait kustomization flux-operator-sync -n flux-system --for=condition=ready --timeout=10m
           kubectl wait helmrelease flux-operator -n flux-system --for=condition=ready --timeout=10m
           kubectl wait kustomization flux-instance-sync -n flux-system --for=condition=ready --timeout=10m
           kubectl wait fluxinstance flux -n flux-system --for=condition=ready --timeout=10m
@@ -88,7 +89,7 @@ jobs:
             --username=${GITHUB_ACTOR} \
             --password=${{ secrets.GITHUB_TOKEN }}
           flux resume kustomization --all
-          message=$(echo ${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
+          message=$(echo "refs/heads/"${surrogate}"@sha1:"$(git log -n 1 ${surrogate} --pretty=format:"%H"))
           sets=$(kubectl get kustomizations -A -o jsonpath='{range .items[*]}{@.metadata.namespace}{"#"}{@.metadata.name}{"#"}{@.spec.sourceRef.name}{"\n"}{end}')
           ignore_pattern="monitoring-flux-infra"
           local_sets=$(echo "${sets}" | grep -v $ignore_pattern)

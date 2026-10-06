@@ -23,9 +23,12 @@ Do not remove `gotk-components.yaml` or `gotk-sync.yaml` before the
 `FluxInstance` is Ready. They provide the bootstrap reconciliation that installs
 the operator and applies the FluxInstance.
 
-If port-forwarding a standalone flux-operator (viz. flux-web on localhost:9080),
-the Flux Status dashboard will also indicate whether the FluxInstance is running
-and in a healthy state.
+When this migration removes those two files from `main`, existing Kind clusters
+that were tracking them must be rebuilt. Announce the migration before merging
+so other users can prepare for the rebuild.
+
+Port-forward `svc/flux-operator` on localhost:9080 to use the Flux Status
+dashboard to verify the FluxInstance is running and healthy.
 
 ## Migration
 

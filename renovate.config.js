@@ -38,7 +38,7 @@ module.exports = (config = {}) => {
         ],
         depNameTemplate: "fluxcd/flux2",
         datasourceTemplate: "github-releases",
-        versioningTemplate: "semver",
+        versioningTemplate: "npm",
       },
     ],
     packageRules: [
@@ -59,6 +59,7 @@ module.exports = (config = {}) => {
         matchManagers: ["custom.regex"],
         matchPackageNames: ["fluxcd/flux2"],
         matchFileNames: ["clusters/kind-cluster/flux/instance/flux-instance.yaml"],
+        minimumReleaseAge: "2 days",
         matchUpdateTypes: ["major"],
         automerge: false,
         labels: ["dependencies", "flux", "kind"],

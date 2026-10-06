@@ -1,6 +1,0 @@
-# https://fluxoperator.dev/docs/charts/flux-operator/
-fullnameOverride: flux-web
-installCRDs: false
-logLevel: debug
-web:
-  serverOnly: true
