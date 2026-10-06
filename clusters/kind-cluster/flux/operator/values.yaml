@@ -1,0 +1,3 @@
+# https://fluxoperator.dev/docs/charts/flux-operator/
+installCRDs: true
+logLevel: debug

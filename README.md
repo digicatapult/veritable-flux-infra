@@ -12,3 +12,4 @@ All documentation resides within the `./docs` directory.
 - To manage secrets within a cluster, see [Managing Secrets](./docs/managing-secrets.md).
 - To configure authentication via Keycloak, see [Keycloak](./docs/keycloak.md).
 - To create a new cluster, see [Creating New Clusters](./docs/creating-new-clusters.md).
+- To migrate a bootstrapped cluster to Flux Operator, see [Migrating to Flux Operator](./docs/migrating-to-flux-operator.md).

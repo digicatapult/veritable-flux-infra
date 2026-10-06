@@ -77,7 +77,7 @@ This instructs FluxCD that it should examine the URI for deployable OCI packages
 New components will typically also require the `HelmRelease` resource, describing the actual service to deploy:
 
 ```yaml
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: demo-api
@@ -113,10 +113,16 @@ spec:
 
 These resources may be defined in the same file or kept separate, e.g. with respective `release.yaml` and `values.yaml` files. You may also need one or more `ConfigMap` or SOPs-encrypted `Secret` resources in order for your service to deploy. This will depend on the specific configuration requirements of the service and these will need to be added individually for each cluster.
 
-To test your changes, you will need to push them to a unique working branch and instruct the FluxCD instance installed on the cluster to synchronise from said branch. This should be done in two steps:
+To test your changes, push them to a unique working branch and instruct the
+FluxCD instance installed on the cluster to synchronise from it. The resource to
+update depends on whether the cluster has migrated to Flux Operator.
 
-1. Modify the `spec.branch` field of the `flux-system/gotk-sync.yaml` file for the cluster in question. Match it to the branch that will have your changes and then push it along with any other changes you wish to make to the remote. Failing to change `gotk-sync.yaml` will prevent FluxCD from tracking the new state and it will instead continue to monitor the existing branch.
-2. Update the FluxCD `GitRepository` resource to match the above branch. This is most easily done with the `flux` command line tool:
+1. For an operator-managed cluster, update `spec.sync.ref` in its
+   `FluxInstance` manifest to `refs/heads/$BRANCH_NAME`. For a conventional
+   bootstrap, update `spec.ref.branch` in `flux-system/gotk-sync.yaml` instead.
+   Commit and push this change with the branch's other changes.
+2. Update the live `GitRepository/flux-system` to the same branch. This is most
+   easily done with the `flux` command line tool:
 
 ```sh
 flux create source git flux-system \
@@ -139,4 +145,6 @@ flux resume kustomization keycloak-sync -n keycloak
 flux reconcile helmrelease keycloak -n keycloak --force
 ```
 
-After you have finished testing the change, revert the branch in `gotk-sync.yaml` to the default and push once again. This will cause FluxCD to track its original branch.
+After testing, restore the default branch in `FluxInstance.spec.sync.ref` for an
+operator-managed cluster, or `gotk-sync.yaml` for a conventional bootstrap, and
+push once again. This returns FluxCD to its original branch.

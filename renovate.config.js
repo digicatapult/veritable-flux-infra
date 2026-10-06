@@ -27,6 +27,20 @@ module.exports = (config = {}) => {
       ],
       labels: ["dependencies", "flux"],
     },
+    customManagers: [
+      {
+        customType: "regex",
+        managerFilePatterns: [
+          "/clusters/kind-cluster/flux/instance/flux-instance\\.yaml$/",
+        ],
+        matchStrings: [
+          "version:\\s*\\\"(?<currentValue>[^\\\"\\s]+)\\\"",
+        ],
+        depNameTemplate: "fluxcd/flux2",
+        datasourceTemplate: "github-releases",
+        versioningTemplate: "npm",
+      },
+    ],
     packageRules: [
       {
         matchManagers: ["github-actions"],
@@ -40,6 +54,15 @@ module.exports = (config = {}) => {
       {
         matchManagers: ["flux"],
         schedule: ["* 9,10,11,12,13,14,15,16,17 * * *"],
+      },
+      {
+        matchManagers: ["custom.regex"],
+        matchPackageNames: ["fluxcd/flux2"],
+        matchFileNames: ["clusters/kind-cluster/flux/instance/flux-instance.yaml"],
+        minimumReleaseAge: "2 days",
+        matchUpdateTypes: ["major"],
+        automerge: false,
+        labels: ["dependencies", "flux", "kind"],
       },
       {
         matchManagers: ["flux"],
