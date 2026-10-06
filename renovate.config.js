@@ -15,7 +15,7 @@ module.exports = (config = {}) => {
     $schema: "https://docs.renovatebot.com/renovate-schema.json",
     onboarding: false,
     requireConfig: false,
-    baseBranches: ["main"],
+    baseBranches: ["dev"],
     extends: [":timezone(Europe/London)"],
     prHourlyLimit: 20,
     prConcurrentLimit: 20,
