@@ -47,8 +47,6 @@ extraVolumes: |
   - name: realm-volume
     configMap:
       name: keycloak-realms
-      namespace: keycloak
 extraVolumeMounts: |
   - mountPath: /opt/keycloak/data/import
     name: realm-volume
-    namespace: keycloak
