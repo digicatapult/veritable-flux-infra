@@ -19,5 +19,5 @@ spec:
   sync:
     kind: GitRepository
     url: https://github.com/digicatapult/veritable-flux-infra.git
-    ref: refs/heads/feature/add_flux_operator
+    ref: refs/heads/bug/add_missing_namespace_to_keycloak_mount
     path: clusters/kind-cluster/base

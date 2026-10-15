@@ -51,3 +51,4 @@ extraVolumes: |
 extraVolumeMounts: |
   - mountPath: /opt/keycloak/data/import
     name: realm-volume
+    namespace: keycloak
