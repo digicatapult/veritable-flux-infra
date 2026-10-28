@@ -69,8 +69,6 @@ module.exports = (config = {}) => {
         matchFileNames: [
           "clusters/kind-cluster/**/*.yaml",
           "clusters/kind-cluster/**/*.yml",
-          "clusters/veritable-prod/**/!*.yaml",
-          "clusters/veritable-prod/**/!*.yml",
         ],
         postUpgradeTasks: {
           fileFilters: [
@@ -90,8 +88,6 @@ module.exports = (config = {}) => {
         matchFileNames: [
           "clusters/kind-cluster/**/*.yaml",
           "clusters/kind-cluster/**/*.yml",
-          "clusters/veritable-prod/**/!*.yaml",
-          "clusters/veritable-prod/**/!*.yml",
         ],
         postUpgradeTasks: {
           fileFilters: [
@@ -104,29 +100,6 @@ module.exports = (config = {}) => {
         automerge: false,
         labels: ["dependencies", "flux", "kind"]
       },
-      // Issue: These rules still merge YAML across directories into a single commit
-      // TODO: Investigate how to force the separation of Renovate's PRs by directory
-      // {
-      //   matchManagers: ["flux"],
-      //   matchFileNames: [
-      //     "clusters/veritable-prod/**/*.yaml",
-      //     "clusters/veritable-prod/**/*.yml",
-      //     "clusters/kind-cluster/**/!*.yaml",
-      //     "clusters/kind-cluster/**/!*.yml",
-      //   ],
-      //   postUpgradeTasks: {
-      //     fileFilters: [
-      //       "clusters/veritable-prod/**/*.yaml",
-      //       "clusters/veritable-prod/**/*.yml"
-      //     ]
-      //   },
-      //   separateMajorMinor: true,
-      //   separateMultipleMajor: true,
-      //   separateMinorPatch: false,
-      //   groupName: null,
-      //   automerge: false,
-      //   addLabels: ["production"],
-      // },
       {
         matchManagers: ["github-actions"],
         labels: ["dependencies", "github-actions"],
