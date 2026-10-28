@@ -3,8 +3,6 @@
 This repository has the following structure:
 
 ```
-├── .github
-│   └── workflows
 ├── clusters
 │   └── kind-cluster
 │       ├── base
@@ -56,7 +54,7 @@ The `flux` directory installs the Flux Operator (`operator`) and the `FluxInstan
 - `cert-manager` issues TLS certificates.
 - `cloudnative-pg` provides the PostgreSQL operator used by Veritable and Keycloak.
 - `keycloak` provides identity and access management.
-- `nginx` and `traefik` provide ingress.
+- `nginx` and `traefik` provide ingress. Choose one. Traefik is the more recent.
 - `monitoring` deploys the observability stack: `kube-prometheus-stack` (Prometheus and Grafana), `loki` (logs), and `alloy` (telemetry collection).
 
 
