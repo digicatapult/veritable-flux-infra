@@ -34,7 +34,7 @@ jobs:
       - name: Install Flux
         uses: fluxcd/flux2/action@main
         with:
-          version: 2.10.0
+          version: 2.9.6
       - name: Init Kind action
         uses: helm/kind-action@v1.13.0
         with:
