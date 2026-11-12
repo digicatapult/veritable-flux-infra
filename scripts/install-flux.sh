@@ -114,7 +114,7 @@ assert_flux_instance_state() {
 install_flux() {
   local context="$1"
   printf "Installing conventional Flux bootstrap...\n"
-  flux install --context "$context" --timeout=3m
+  flux install --context "$context" --timeout=3m --version v2.10.0
   printf "OK\nFlux successfully installed in %s\n" "$context"
 }
 
