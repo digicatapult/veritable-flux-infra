@@ -5,7 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   distribution:
-    version: "2.x"
+    # renovate: datasource=github-releases depName=fluxcd/flux2 versioning=npm
+    version: "2.9.6"
     registry: ghcr.io/fluxcd
   components:
     - source-controller

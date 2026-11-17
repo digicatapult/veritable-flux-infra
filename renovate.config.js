@@ -31,10 +31,34 @@ module.exports = (config = {}) => {
       {
         customType: "regex",
         managerFilePatterns: [
+          "/\\.github/workflows/test-kind-e2e\\.yaml$/",
+        ],
+        matchStrings: [
+          "# renovate: datasource=github-releases depName=fluxcd/flux2 versioning=npm\\s+version:\\s*(?<currentValue>[^\\s]+)",
+        ],
+        depNameTemplate: "fluxcd/flux2",
+        datasourceTemplate: "github-releases",
+        versioningTemplate: "npm",
+      },
+      {
+        customType: "regex",
+        managerFilePatterns: [
+          "/scripts/install-flux\\.sh$/",
+        ],
+        matchStrings: [
+          "# renovate: datasource=github-releases depName=fluxcd/flux2 versioning=npm\\s+flux install .* --version v(?<currentValue>[^\\s]+)",
+        ],
+        depNameTemplate: "fluxcd/flux2",
+        datasourceTemplate: "github-releases",
+        versioningTemplate: "npm",
+      },
+      {
+        customType: "regex",
+        managerFilePatterns: [
           "/clusters/kind-cluster/flux/instance/flux-instance\\.yaml$/",
         ],
         matchStrings: [
-          "version:\\s*\\\"(?<currentValue>[^\\\"\\s]+)\\\"",
+          "# renovate: datasource=github-releases depName=fluxcd/flux2 versioning=npm\\s+version:\\s*\\\"(?<currentValue>[^\\\"\\s]+)\\\"",
         ],
         depNameTemplate: "fluxcd/flux2",
         datasourceTemplate: "github-releases",
@@ -58,10 +82,10 @@ module.exports = (config = {}) => {
       {
         matchManagers: ["custom.regex"],
         matchPackageNames: ["fluxcd/flux2"],
-        matchFileNames: ["clusters/kind-cluster/flux/instance/flux-instance.yaml"],
         minimumReleaseAge: "2 days",
-        matchUpdateTypes: ["major"],
         automerge: false,
+        groupName: "Flux distribution",
+        separateMajorMinor: true,
         labels: ["dependencies", "flux", "kind"],
       },
       {
