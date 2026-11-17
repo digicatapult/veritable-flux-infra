@@ -115,7 +115,7 @@ install_flux() {
   local context="$1"
   printf "Installing conventional Flux bootstrap...\n"
   # renovate: datasource=github-releases depName=fluxcd/flux2 versioning=npm
-  flux install --context "$context" --timeout=3m --version v2.9.6
+  flux install --context "$context" --timeout=3m --version vv2.10.0
   printf "OK\nFlux successfully installed in %s\n" "$context"
 }
 
