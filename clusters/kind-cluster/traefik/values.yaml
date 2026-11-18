@@ -59,6 +59,3 @@ metrics:
     serviceMonitor:
       enabled: true
       namespace: monitoring
-logs:
-  general:
-    level: "DEBUG"
